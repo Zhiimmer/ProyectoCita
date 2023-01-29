@@ -447,7 +447,7 @@ public class Usuario {
 
     /**
      * Lee el arreglo número de los usuarios 
-     * @return número de usuarios
+     * @return número de los usuarios
      */
     public static int getNumUsuarios() {
         return numUsuarios;
