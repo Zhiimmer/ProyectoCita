@@ -5,6 +5,7 @@
 package dominio;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -44,14 +45,12 @@ public class Cita {
     }
 
     /**
-     * constructor con argumentos referenciado a objetos
+     * constructor con argumentos referenciado a objetos con la "sobre carga de métodos"
      *
-     * @param cit
+     * @param cita1
      */
-    public Cita(Cita cit) {
-        horaAcordada = cit.horaAcordada;
-        fecha = cit.fecha;
-        motivo = cit.motivo;
+    public Cita(Cita cita1) {
+       this(cita1.getHoraAcordada(), cita1.getFecha(), cita1.getMotivo());
     }
 
     /**
@@ -88,4 +87,24 @@ public class Cita {
         return "Cita{" + "horaAcordada=" + horaAcordada + ", fecha=" + fecha + ", motivo=" + motivo + '}';
     }
 
+   
+
+    @Override
+    public boolean equals(Object o) {
+        boolean result = false;
+        if ((o != null) && (o instanceof Cita)) {
+            Cita c = (Cita) o;
+            if ((fecha == c.fecha)) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.fecha);
+        return hash;
+}        
 }
