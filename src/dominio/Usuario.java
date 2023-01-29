@@ -1,5 +1,6 @@
-
 package dominio;
+
+import java.util.Scanner;
 
 /**
  *
@@ -8,58 +9,57 @@ package dominio;
 public class Usuario {
 
     //ATRIBUTOS
-    
     /**
-    * Nombre del usuario
-    */
+     * Nombre del usuario
+     */
     private String nombre;
     /**
-    * Apellido del usuario
-    */
+     * Apellido del usuario
+     */
     private String apellido;
     /**
-    * Edad del usuario
-    */
+     * Edad del usuario
+     */
     private int edad;
     /**
-    * Correo institucional del usuario
-    */
+     * Correo institucional del usuario
+     */
     private String correoinstitucional;
     /**
-    * Género musical del usuario
-    */
+     * Género musical del usuario
+     */
     private String generoMusical;
     /**
-    * Color favorito del usuario
-    */
+     * Color favorito del usuario
+     */
     private String colorFav;
     /**
-    * Comida favorita del usuario
-    */
+     * Comida favorita del usuario
+     */
     private String comidaFav;
     /**
-    * Libro favorito del usuario
-    */
+     * Libro favorito del usuario
+     */
     private String libroFav;
     /**
-    * animal favorito del usuario
-    */
+     * animal favorito del usuario
+     */
     private String animalFav;
     /**
-    * Película favorita del usuario
-    */
+     * Película favorita del usuario
+     */
     private String peliculaFav;
     /**
-    * Hobby del usuario
-    */
+     * Hobby del usuario
+     */
     private String hobby;
     /**
-    * Signo zodiacal del usuario
-    */
+     * Signo zodiacal del usuario
+     */
     private String signoZodiacal;
     /**
-    * Fumador Social del usuario
-    */
+     * Fumador Social del usuario
+     */
     private boolean fumadorSocial;
     /**
      * Compatibilidad del usuarii
@@ -89,20 +89,20 @@ public class Usuario {
         sugerencias = new Sugerencia[3];
         numSugerencias = 0;
         Usuarios = new Usuario[2];
-        numUsuarios = 0; 
+        numUsuarios = 0;
     }
-    
+
     /**
      * Método constructor sin argumentos con la "sobre carga de métodos"
      */
-    public Usuario(){
+    public Usuario() {
         this("Mateo", "Espinosa", 20, "maespinosa@uce.edu.ec", "bachata", "Azul", "Lasaña", "Los 3 cerditos", "Perro",
-             "El conjuro", "Tocar guitarra", "Aries", false);
+                "El conjuro", "Tocar guitarra", "Aries", false);
     }
-     
+
     /**
      * Método constructor con argumentos
-     * 
+     *
      * @param nombre
      * @param apellido
      * @param edad
@@ -115,11 +115,11 @@ public class Usuario {
      * @param peliculaFav
      * @param hobby
      * @param signoZodiacal
-     * @param fumadorSocial 
+     * @param fumadorSocial
      */
     public Usuario(String nombre, String apellido, int edad, String correoInstitucional, String generoMusical, String colorFav,
-                    String comidaFav, String libroFav, String animalFav, String peliculaFav, String hobby, String signoZodiacal,
-                    boolean fumadorSocial){
+            String comidaFav, String libroFav, String animalFav, String peliculaFav, String hobby, String signoZodiacal,
+            boolean fumadorSocial) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -132,231 +132,257 @@ public class Usuario {
         this.peliculaFav = peliculaFav;
         this.hobby = hobby;
         this.signoZodiacal = signoZodiacal;
-        this.fumadorSocial = fumadorSocial;        
+        this.fumadorSocial = fumadorSocial;
     }
-    
+
     /**
-     * Método constructor referenciado a un objeto con la "sobre carga de métodos"
-     * @param user1 
+     * Método constructor referenciado a un objeto con la "sobre carga de
+     * métodos"
+     *
+     * @param user1
      */
-    public Usuario(Usuario user1){
+    public Usuario(Usuario user1) {
         this(user1.getNombre(), user1.getApellido(), user1.getEdad(), user1.getCorreoinstitucional(), user1.getGeneroMusical(),
-             user1.getColorFav(), user1.getComidaFav(), user1.getLibroFav(), user1.getAnimalFav(), user1.getPeliculaFav(),
-             user1.getHobby(), user1.getSignoZodiacal(), user1.isFumadorSocial());
+                user1.getColorFav(), user1.getComidaFav(), user1.getLibroFav(), user1.getAnimalFav(), user1.getPeliculaFav(),
+                user1.getHobby(), user1.getSignoZodiacal(), user1.isFumadorSocial());
     }
-    
+
     /**
      * Métodos Set
      */
-    
     /**
-    * Lee el nombre del usuario
-    * @return nombre del usuario
-    */
+     * Lee el nombre del usuario
+     *
+     * @return nombre del usuario
+     */
     public String getNombre() {
 //        nombre = "Juanito";
         return nombre;
     }
-    
+
     /**
-    * Modifica el nombre del usuario
-    * @param nombre nombre del usuario
-    */
+     * Modifica el nombre del usuario
+     *
+     * @param nombre nombre del usuario
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-    * Lee el apellido del usuario
-    * @return apellido del usuario
-    */
+     * Lee el apellido del usuario
+     *
+     * @return apellido del usuario
+     */
     public String getApellido() {
 //        apellido = "Perez";
         return apellido;
     }
 
     /**
-    * Modifica el apellido del usuario
-    * @param apellido apellido del usuario
-    */
+     * Modifica el apellido del usuario
+     *
+     * @param apellido apellido del usuario
+     */
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+
     /**
-    * Lee la edad del usuario
-    * @return edad del usuario
-    */
+     * Lee la edad del usuario
+     *
+     * @return edad del usuario
+     */
     public int getEdad() {
 //        edad = 19;
         return edad;
     }
 
     /**
-    * Modifica la edad del usuario
-    * @param edad del usuario
-    */
+     * Modifica la edad del usuario
+     *
+     * @param edad del usuario
+     */
     public void setEdad(int edad) {
         this.edad = edad;
     }
 
     /**
-    * Lee el correo institucional del usuario
-    * @return correoinstitucional correo del usuario
-    */
+     * Lee el correo institucional del usuario
+     *
+     * @return correoinstitucional correo del usuario
+     */
     public String getCorreoinstitucional() {
 //        correoinstitucional = "juanitoperez@uce.edu.ec";
         return correoinstitucional;
     }
 
     /**
-    * Modifica el correo instirucional de usuario
-    * @param correoinstitucional correo del usuario
-    */
+     * Modifica el correo instirucional de usuario
+     *
+     * @param correoinstitucional correo del usuario
+     */
     public void setCorreoinstitucional(String correoinstitucional) {
         this.correoinstitucional = correoinstitucional;
     }
-    
+
     /**
-    * Lee el género musical del usuario
-    * @return generoMusical género musical del usuario
-    */
+     * Lee el género musical del usuario
+     *
+     * @return generoMusical género musical del usuario
+     */
     public String getGeneroMusical() {
 //        generoMusical = "Rock";
         return generoMusical;
     }
 
     /**
-    * Modifica el género musical del usuario
-    * @param generoMusical género musical del usuario
-    */
+     * Modifica el género musical del usuario
+     *
+     * @param generoMusical género musical del usuario
+     */
     public void setGeneroMusical(String generoMusical) {
         this.generoMusical = generoMusical;
     }
-    
+
     /**
-    * Lee el color favorito del usuario
-    * @return colorFav color favorito del usuario
-    */
+     * Lee el color favorito del usuario
+     *
+     * @return colorFav color favorito del usuario
+     */
     public String getColorFav() {
 //        colorFav = "Verde";
         return colorFav;
     }
-    
+
     /**
-    * Modifica el color favorito del usuario
-    * @param colorFav color favorito del usuario
-    */
+     * Modifica el color favorito del usuario
+     *
+     * @param colorFav color favorito del usuario
+     */
     public void setColorFav(String colorFav) {
         this.colorFav = colorFav;
     }
 
     /**
-    * Lee la comida favorita del usuario
-    * @return comidaFav comida favorita del usuario
-    */
+     * Lee la comida favorita del usuario
+     *
+     * @return comidaFav comida favorita del usuario
+     */
     public String getComidaFav() {
 //        comidaFav = "Papas";
         return comidaFav;
     }
 
     /**
-    * Modifica el color favorito del usuario
-    * @param comidaFav comida favorita del usuario
-    */
+     * Modifica el color favorito del usuario
+     *
+     * @param comidaFav comida favorita del usuario
+     */
     public void setComidaFav(String comidaFav) {
         this.comidaFav = comidaFav;
     }
-    
+
     /**
-    * Lee el libro favorito del usuario
-    * @return libroFav libro favorito del usuario
-    */
+     * Lee el libro favorito del usuario
+     *
+     * @return libroFav libro favorito del usuario
+     */
     public String getLibroFav() {
 //        libroFav = "Condorito";
         return libroFav;
     }
 
     /**
-    * Modifica el libro favorito de usuario
-    * @param libroFav libro favorito del usuario
-    */
+     * Modifica el libro favorito de usuario
+     *
+     * @param libroFav libro favorito del usuario
+     */
     public void setLibroFav(String libroFav) {
         this.libroFav = libroFav;
     }
-    
+
     /**
-    * Lee el animal favorito de usuario
-    * @return animalFav del usuario
-    */
+     * Lee el animal favorito de usuario
+     *
+     * @return animalFav del usuario
+     */
     public String getAnimalFav() {
 //        animalFav = "Puma";
         return animalFav;
     }
 
     /**
-    * Modifica el animal favorito de usuario
-    * @param animalFav animal favorito del usuario
-    */
+     * Modifica el animal favorito de usuario
+     *
+     * @param animalFav animal favorito del usuario
+     */
     public void setAnimalFav(String animalFav) {
         this.animalFav = animalFav;
     }
-    
+
     /**
-    * Lee la película favorita del usuario
-    * @return peliculaFav pelicula favorita del usuario
-    */
+     * Lee la película favorita del usuario
+     *
+     * @return peliculaFav pelicula favorita del usuario
+     */
     public String getPeliculaFav() {
 //        peliculaFav = "Spider-Man";
         return peliculaFav;
     }
 
     /**
-    * Modifica la película favotia del usuario
-    * @param peliculaFav pelicula favorita del usuario
-    */
+     * Modifica la película favotia del usuario
+     *
+     * @param peliculaFav pelicula favorita del usuario
+     */
     public void setPeliculaFav(String peliculaFav) {
         this.peliculaFav = peliculaFav;
     }
 
     /**
-    * Lee el hobby del usuario
-    * @return hobby del usuario
-    */
+     * Lee el hobby del usuario
+     *
+     * @return hobby del usuario
+     */
     public String getHobby() {
 //        hobby = "Correr";
         return hobby;
     }
 
     /**
-    * Modifica el hobby del usuario
-    * @param hobby hobby del usuario
-    */
+     * Modifica el hobby del usuario
+     *
+     * @param hobby hobby del usuario
+     */
     public void setHobby(String hobby) {
         this.hobby = hobby;
     }
 
     /**
-    * Lee el signo zodiacal del usuario
-    * @return signoZodiacal signoZodiacal del usuario
-    */
+     * Lee el signo zodiacal del usuario
+     *
+     * @return signoZodiacal signoZodiacal del usuario
+     */
     public String getSignoZodiacal() {
 //        signoZodiacal = "Cancer";
         return signoZodiacal;
     }
 
     /**
-    * Modifica el signo zodiacal de usuario
-    * @param signoZodiacal signo zodiacal del usuario
-    */
+     * Modifica el signo zodiacal de usuario
+     *
+     * @param signoZodiacal signo zodiacal del usuario
+     */
     public void setSignoZodiacal(String signoZodiacal) {
         this.signoZodiacal = signoZodiacal;
     }
 
     /**
-    * Valida si es fumador social el usuario
-    * @return fumadorSocial fumador social del usuario
-    */
+     * Valida si es fumador social el usuario
+     *
+     * @return fumadorSocial fumador social del usuario
+     */
     public boolean isFumadorSocial() {
 //        boolean result;
         if (fumadorSocial == true) {
@@ -368,15 +394,17 @@ public class Usuario {
     }
 
     /**
-    * Modifica el fumador social de usuario
-    * @param fumadorSocial fumador social del usuario
-    */
+     * Modifica el fumador social de usuario
+     *
+     * @param fumadorSocial fumador social del usuario
+     */
     public void setFumadorSocial(boolean fumadorSocial) {
         this.fumadorSocial = fumadorSocial;
     }
 
     /**
      * Lee la compatibilidad del usuario
+     *
      * @return Compatibilidad del usuario
      */
     public Compatibilidad getCompatibilidad() {
@@ -385,6 +413,7 @@ public class Usuario {
 
     /**
      * Modifica la compatibilidad del usuario
+     *
      * @param compatibilidad compatibilidad del usuario
      */
     public void setCompatibilidad(Compatibilidad compatibilidad) {
@@ -393,6 +422,7 @@ public class Usuario {
 
     /**
      * Lee la compatibilidad del usuario
+     *
      * @return sugerencias del usuarii
      */
     public static Sugerencia[] getSugerencias() {
@@ -401,6 +431,7 @@ public class Usuario {
 
     /**
      * Modifica las sugerencias del usuario
+     *
      * @param sugerencias sugerencias del usuario
      */
     public static void setSugerencias(Sugerencia[] sugerencias) {
@@ -409,6 +440,7 @@ public class Usuario {
 
     /**
      * Lee el número de sugerencias del usuario
+     *
      * @return Número de sugerencias del usuario
      */
     public static int getNumSugerencias() {
@@ -417,6 +449,7 @@ public class Usuario {
 
     /**
      * Modifica el número de sugerencias del usuario
+     *
      * @param numSugerencias número de sugerencias del usuario
      */
     public static void setNumSugerencias(int numSugerencias) {
@@ -425,6 +458,7 @@ public class Usuario {
 
     /**
      * Lee el arreglo de los usuarios
+     *
      * @return usuarios
      */
     public static Usuario[] getUsuarios() {
@@ -433,14 +467,16 @@ public class Usuario {
 
     /**
      * Modifica el arreglo de los usuarios
-     * @param Usuarios 
+     *
+     * @param Usuarios
      */
     public static void setUsuarios(Usuario[] Usuarios) {
         Usuario.Usuarios = Usuarios;
     }
 
     /**
-     * Lee el arreglo número de los usuarios 
+     * Lee el arreglo número de los usuarios
+     *
      * @return número de los usuarios
      */
     public static int getNumUsuarios() {
@@ -449,9 +485,131 @@ public class Usuario {
 
     /**
      * Modifica el arreglo del número de los usuarios
+     *
      * @param numUsuarios número de losusuarios
      */
     public static void setNumUsuarios(int numUsuarios) {
         Usuario.numUsuarios = numUsuarios;
-    }  
+    }
+
+    /**
+     * Creación del método equals
+     *
+     * @param s
+     * @return para saber si dos objetos son del mismo tipo y tienen los mismos
+     * datos
+     */
+    @Override
+    public boolean equals(Object s) {
+        boolean resp = false;
+        Usuario u = null;
+        if (s != null && s instanceof Usuario) {
+            u = (Usuario) s;
+            if (nombre.equals(u.nombre) && apellido.equals(u.apellido) && correoinstitucional.equals(u.correoinstitucional)) {
+                resp = true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Método para crear una nueva sugerencia.
+     *
+     * @param sugerencia la sugerencia nueva.
+     */
+    public static void crearSugerencia() {
+        Scanner lector = new Scanner(System.in);
+        String descripcion;
+        System.out.println("Ingrese su sugerencia: ");
+        descripcion = lector.next();
+
+        sugerencias[numSugerencias] = new Sugerencia(descripcion);
+        numSugerencias++;
+    }
+
+    /**
+     * Método para validar la sugerencia creada
+     *
+     * @param s
+     * @return
+     */
+    public boolean validarSugerencia(Sugerencia s) {
+        boolean resp = false;
+        for (Sugerencia sugerencia : sugerencias) {
+            if (sugerencia != null) {
+                if (sugerencia.equals(s)) {
+                    resp = true;
+                }
+            }
+        }
+        return resp;
+    }
+
+    /**
+     * Método para editar una sugerencia existente.
+     *
+     * @param posicion
+     * @param sugerencia
+     *
+     */
+    public void editarSugerencia(int posicion, String sugerencia) {
+        sugerencias[posicion] = new Sugerencia();
+    }
+
+    /**
+     * Método para buscar una sugerencia específica.
+     *
+     * @param posicion
+     * @return el objeto Usuario correspondiente a la sugerencia buscada, o null
+     * si no se encuentra la sugerencia.
+     */
+    public Sugerencia buscarSugerencia(int posicion) {
+        return sugerencias[posicion];
+    }
+
+    /**
+     * Método para listar todos las sugerencias creadas.
+     *
+     * @return
+     */
+    public String listarSugerencia() {
+        String lista = "";
+        for (Sugerencia sugerencia : sugerencias) {
+            if (sugerencia != null) {
+                lista += sugerencia + "\r\n";
+            }
+        }
+        return lista;
+
+    }
+
+    /**
+     * Método para eliminar una sugerencia existente.
+     *
+     * @param posicion
+     * @param sugerencia
+     */
+    public void eliminarSugerencia(int posicion, String sugerencia) {
+        numSugerencias--;
+        int a = 0;
+        Sugerencia[] eliAux = sugerencias;
+        sugerencias = new Sugerencia[numSugerencias];
+        if (posicion < eliAux.length - 1) {
+            if (posicion == eliAux.length - 1) {
+                System.arraycopy(eliAux, 0, sugerencias, 0, numSugerencias);
+
+            } else {
+                for (int i = 0; i < eliAux.length; i++) {
+                    if (i != posicion) {
+                        sugerencias[a] = eliAux[i];
+                        a++;
+
+                    }
+                }
+            }
+        } else {
+            System.out.println("No existe la posicion: " + posicion);
+
+        }
+    }
 }
