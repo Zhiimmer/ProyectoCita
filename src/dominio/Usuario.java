@@ -93,7 +93,7 @@ public class Usuario {
     }
     
     /**
-     * Método constructor sin argumentos
+     * Método constructor sin argumentos con la "sobre carga de métodos"
      */
     public Usuario(){
         this("Mateo", "Espinosa", 20, "maespinosa@uce.edu.ec", "bachata", "Azul", "Lasaña", "Los 3 cerditos", "Perro",
@@ -135,20 +135,14 @@ public class Usuario {
         this.fumadorSocial= fumadorSocial;
     }
     
+    /**
+     * Método constructor referenciado a un objeto con la "sobre carga de métodos"
+     * @param user1 
+     */
     public Usuario(Usuario user1){
-        nombre = user1.getNombre();
-        apellido = user1.getApellido();
-        edad = user1.getEdad();
-        correoinstitucional = user1.getCorreoinstitucional();
-        generoMusical = user1.getGeneroMusical();
-        colorFav = user1.getColorFav();
-        comidaFav = user1.getComidaFav();        
-        libroFav = user1.getLibroFav();
-        animalFav = user1.getAnimalFav();
-        peliculaFav = user1.getPeliculaFav();
-        hobby = user1.getHobby();
-        signoZodiacal = user1.getSignoZodiacal();
-        fumadorSocial = user1.isFumadorSocial();
+        this(user1.getNombre(), user1.getApellido(), user1.getEdad(), user1.getCorreoinstitucional(), user1.getGeneroMusical(),
+             user1.getColorFav(), user1.getComidaFav(), user1.getLibroFav(), user1.getAnimalFav(), user1.getPeliculaFav(),
+             user1.getHobby(), user1.getSignoZodiacal(), user1.isFumadorSocial());
     }
     
     /**
