@@ -95,7 +95,9 @@ public class Usuario {
     /**
      * Método constructor sin argumentos
      */
-    public Usuario(){        
+    public Usuario(){
+        this("Mateo", "Espinosa", 20, "maespinosa@uce.edu.ec", "bachata", "Azul", "Lasaña", "Los 3 cerditos", "Perro",
+             "El conjuro", "Tocar guitarra", "Aries", false);
     }
      
     /**
@@ -135,6 +137,18 @@ public class Usuario {
     
     public Usuario(Usuario user1){
         nombre = user1.getNombre();
+        apellido = user1.getApellido();
+        edad = user1.getEdad();
+        correoinstitucional = user1.getCorreoinstitucional();
+        generoMusical = user1.getGeneroMusical();
+        colorFav = user1.getColorFav();
+        comidaFav = user1.getComidaFav();        
+        libroFav = user1.getLibroFav();
+        animalFav = user1.getAnimalFav();
+        peliculaFav = user1.getPeliculaFav();
+        hobby = user1.getHobby();
+        signoZodiacal = user1.getSignoZodiacal();
+        fumadorSocial = user1.isFumadorSocial();
     }
     
     /**
@@ -173,6 +187,23 @@ public class Usuario {
     */
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+    
+    /**
+    * Lee la edad del usuario
+    * @return edad del usuario
+    */
+    public int getEdad() {
+//        edad = 19;
+        return edad;
+    }
+
+    /**
+    * Modifica la edad del usuario
+    * @param edad del usuario
+    */
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     /**
@@ -242,6 +273,57 @@ public class Usuario {
     public void setComidaFav(String comidaFav) {
         this.comidaFav = comidaFav;
     }
+    
+    /**
+    * Lee el libro favorito del usuario
+    * @return libroFav libro favorito del usuario
+    */
+    public String getLibroFav() {
+//        libroFav = "Condorito";
+        return libroFav;
+    }
+
+    /**
+    * Modifica el libro favorito de usuario
+    * @param libroFav libro favorito del usuario
+    */
+    public void setLibroFav(String libroFav) {
+        this.libroFav = libroFav;
+    }
+    
+    /**
+    * Lee el animal favorito de usuario
+    * @return animalFav del usuario
+    */
+    public String getAnimalFav() {
+//        animalFav = "Puma";
+        return animalFav;
+    }
+
+    /**
+    * Modifica el animal favorito de usuario
+    * @param animalFav animal favorito del usuario
+    */
+    public void setAnimalFav(String animalFav) {
+        this.animalFav = animalFav;
+    }
+    
+    /**
+    * Lee la película favorita del usuario
+    * @return peliculaFav pelicula favorita del usuario
+    */
+    public String getPeliculaFav() {
+//        peliculaFav = "Spider-Man";
+        return peliculaFav;
+    }
+
+    /**
+    * Modifica la película favotia del usuario
+    * @param peliculaFav pelicula favorita del usuario
+    */
+    public void setPeliculaFav(String peliculaFav) {
+        this.peliculaFav = peliculaFav;
+    }
 
     /**
     * Lee el hobby del usuario
@@ -278,40 +360,6 @@ public class Usuario {
     }
 
     /**
-    * Lee la película favorita del usuario
-    * @return peliculaFav pelicula favorita del usuario
-    */
-    public String getPeliculaFav() {
-//        peliculaFav = "Spider-Man";
-        return peliculaFav;
-    }
-
-    /**
-    * Modifica la película favotia del usuario
-    * @param peliculaFav pelicula favorita del usuario
-    */
-    public void setPeliculaFav(String peliculaFav) {
-        this.peliculaFav = peliculaFav;
-    }
-
-    /**
-    * Lee el libro favorito del usuario
-    * @return libroFav libro favorito del usuario
-    */
-    public String getLibroFav() {
-//        libroFav = "Condorito";
-        return libroFav;
-    }
-
-    /**
-    * Modifica el libro favorito de usuario
-    * @param libroFav libro favorito del usuario
-    */
-    public void setLibroFav(String libroFav) {
-        this.libroFav = libroFav;
-    }
-
-    /**
     * Valida si es fumador social el usuario
     * @return fumadorSocial fumador social del usuario
     */
@@ -334,88 +382,82 @@ public class Usuario {
     }
 
     /**
-    * Lee el animal favorito de usuario
-    * @return animalFav del usuario
-    */
-    public String getAnimalFav() {
-//        animalFav = "Puma";
-        return animalFav;
-    }
-
-    /**
-    * Modifica el animal favorito de usuario
-    * @param animalFav animal favorito del usuario
-    */
-    public void setAnimalFav(String animalFav) {
-        this.animalFav = animalFav;
-    }
-
-    /**
-    * Lee la edad del usuario
-    * @return edad del usuario
-    */
-    public int getEdad() {
-//        edad = 19;
-        return edad;
-    }
-
-    /**
-    * Modifica la edad del usuario
-    * @param edad del usuario
-    */
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-    
-    /**
-     * 
-     * @return 
+     * Lee la compatibilidad del usuario
+     * @return Compatibilidad del usuario
      */
-    public Sugerencia[] getSugerencias() {
+    public Compatibilidad getCompatibilidad() {
+        return compatibilidad;
+    }
+
+    /**
+     * Modifica la compatibilidad del usuario
+     * @param compatibilidad compatibilidad del usuario
+     */
+    public void setCompatibilidad(Compatibilidad compatibilidad) {
+        this.compatibilidad = compatibilidad;
+    }
+
+    /**
+     * Lee la compatibilidad del usuario
+     * @return sugerencias del usuarii
+     */
+    public static Sugerencia[] getSugerencias() {
         return sugerencias;
     }
-    
+
     /**
-     * Metodo Setter que sirve para modificar el valor
-     *
-     * @param clientes
+     * Modifica las sugerencias del usuario
+     * @param sugerencias sugerencias del usuario
      */
-    public void setSugerencia(Sugerencia[] sugerencias) {
+    public static void setSugerencias(Sugerencia[] sugerencias) {
         Usuario.sugerencias = sugerencias;
     }
-    
+
     /**
-    * Lee el número de sugerenicas del usuario
-    * @return numSugerencias nuúmero de sugerencias del usuario
-    */
-    public int getnumSugerencias() {
+     * Lee el número de sugerencias del usuario
+     * @return Número de sugerencias del usuario
+     */
+    public static int getNumSugerencias() {
         return numSugerencias;
     }
 
     /**
-    * Modifica el número de sugerencias del usuario
-    * @param numSugerencias número de sugerencias del usuario
-    */
-    public void setnumSugerencias(int numSugerencias) {
+     * Modifica el número de sugerencias del usuario
+     * @param numSugerencias número de sugerencias del usuario
+     */
+    public static void setNumSugerencias(int numSugerencias) {
         Usuario.numSugerencias = numSugerencias;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    /**
+     * Lee el arreglo de los usuarios
+     * @return usuarios
+     */
+    public static Usuario[] getUsuarios() {
+        return Usuarios;
+    }
+
+    /**
+     * Modifica el arreglo de los usuarios
+     * @param Usuarios 
+     */
+    public static void setUsuarios(Usuario[] Usuarios) {
+        Usuario.Usuarios = Usuarios;
+    }
+
+    /**
+     * Lee el arreglo número de los usuarios 
+     * @return número de usuarios
+     */
+    public static int getNumUsuarios() {
+        return numUsuarios;
+    }
+
+    /**
+     * Modifica el arreglo del número de los usuarios
+     * @param numUsuarios número de usuarios
+     */
+    public static void setNumUsuarios(int numUsuarios) {
+        Usuario.numUsuarios = numUsuarios;
+    }  
 }
