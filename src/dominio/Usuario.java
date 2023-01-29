@@ -64,11 +64,11 @@ public class Usuario {
     /**
      * Compatibilidad del usuarii
      */
-    private Oompatibilidad compatibilidad[];
+    //private Oompatibilidad compatibilidad[];
     /**
      * Arreglo de las sugerencias creadas
      */
-    private static Sugerencia sugerencias[];
+    //private static Sugerencia sugerencias[];
     /**
      * Número de sugerencias
      */
