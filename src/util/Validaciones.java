@@ -71,7 +71,7 @@ public class Validaciones {
     }
     /**
      *
-     * Validación del Nombre
+     * Validación del signoZodiacal
      */
     public static boolean validarSignoZodiacal(String signoZodiacal) {
         return signoZodiacal.matches("[A-Z][a-zA-Z]*");
