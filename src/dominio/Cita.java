@@ -24,10 +24,8 @@ public class Cita {
      * Metodo sin argumentos
      */
     public Cita() {
-
-        this.horaAcordada = "No hay hora Acordada";
-        this.fecha = new Date(2000, 12, 13);
-        this.motivo = "razon para la cita";
+        this("No hay hora Acordada", new Date(2000, 12, 13), "razon para la cita");
+      
 
     }
 
