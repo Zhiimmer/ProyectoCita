@@ -455,7 +455,7 @@ public class Usuario {
 
     /**
      * Modifica el arreglo del número de los usuarios
-     * @param numUsuarios número de usuarios
+     * @param numUsuarios número de losusuarios
      */
     public static void setNumUsuarios(int numUsuarios) {
         Usuario.numUsuarios = numUsuarios;
