@@ -3,7 +3,7 @@ package dominio;
 
 /**
  *
- * @author Edu. N
+ * @author Ronny Alexis Paspuel Anchundia
  */
 public class Usuario {
 
