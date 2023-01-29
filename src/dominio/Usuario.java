@@ -515,7 +515,6 @@ public class Usuario {
     /**
      * Método para crear una nueva sugerencia.
      *
-     * @param sugerencia la sugerencia nueva del usuario.
      */
     public static void crearSugerencia() {
         Scanner lector = new Scanner(System.in);
