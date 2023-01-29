@@ -120,9 +120,19 @@ public class Usuario {
     public Usuario(String nombre, String apellido, int edad, String correoInstitucional, String generoMusical, String colorFav,
                     String comidaFav, String libroFav, String animalFav, String peliculaFav, String hobby, String signoZodiacal,
                     boolean fumadorSocial){
-
-//        this(this.nombre, this.apellido,this.edad,this.correoInstitucional, this.generoMusical,this.colorFav,this.comidaFav,this.libroFav,this.animalFav,this.peliculaFav,this.hobby,this.signoZodiacal,this.fumadorSocial);
-        
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.correoinstitucional = correoInstitucional;
+        this.generoMusical = generoMusical;
+        this.colorFav = colorFav;
+        this.comidaFav = comidaFav;
+        this.libroFav = libroFav;
+        this.animalFav = animalFav;
+        this.peliculaFav = peliculaFav;
+        this.hobby = hobby;
+        this.signoZodiacal = signoZodiacal;
+        this.fumadorSocial = fumadorSocial;        
     }
     
     /**
