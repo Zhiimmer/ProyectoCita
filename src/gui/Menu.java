@@ -84,8 +84,8 @@ public class Menu {
                 System.out.println("-------------------------------------");
                 System.out.println("");
                 System.out.println("");
-//                MenuSugerencia subMenuSugerencias = new MenuSugerencia();
-//                subMenuSugerencias.setOpc(opcion);
+                MenuSugerencia subMenuSugerencias = new MenuSugerencia();
+                subMenuSugerencias.setOpc(opcion);
             }
             case 6 ->
                 System.out.println("Gracias por visitarnos, vuelva pronto :)");

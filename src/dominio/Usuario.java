@@ -1,6 +1,8 @@
 package dominio;
 
 import java.util.Scanner;
+import dominio.Sugerencia;
+import java.util.Date;
 
 /**
  *
@@ -68,7 +70,7 @@ public class Usuario {
     /**
      * Arreglo de las sugerencias creadas
      */
-    private static Sugerencia sugerencias[];
+    private static Sugerencia[] listaSugerencias = new Sugerencia[0];
     /**
      * Número de sugerencias
      */
@@ -86,7 +88,6 @@ public class Usuario {
      * Bloque estático
      */
     static {
-        sugerencias = new Sugerencia[3];
         numSugerencias = 0;
         Usuarios = new Usuario[2];
         numUsuarios = 0;
@@ -426,7 +427,7 @@ public class Usuario {
      * @return sugerencias del usuarii
      */
     public static Sugerencia[] getSugerencias() {
-        return sugerencias;
+        return listaSugerencias;
     }
 
     /**
@@ -435,7 +436,7 @@ public class Usuario {
      * @param sugerencias sugerencias del usuario
      */
     public static void setSugerencias(Sugerencia[] sugerencias) {
-        Usuario.sugerencias = sugerencias;
+        Usuario.listaSugerencias = sugerencias;
     }
 
     /**
@@ -518,23 +519,32 @@ public class Usuario {
      */
     public static void crearSugerencia() {
         Scanner lector = new Scanner(System.in);
-        String descripcion;
-        System.out.println("Ingrese su sugerencia: ");
-        descripcion = lector.next();
-
-        sugerencias[numSugerencias] = new Sugerencia(descripcion);
-        numSugerencias++;
+        String descricion;
+        Date fecha;
+        int dia, mes, anio;
+        System.out.println("Ingrese la sugerencia :");
+        descricion= lector.next();
+        System.out.println("Ingrese la fecha :");
+       System.out.println("Ingrese el dia :");
+         dia=lector.nextInt();
+         System.out.println("Ingrese el mes :");
+         mes=lector.nextInt();
+         System.out.println("Ingrese el año :");
+         anio=lector.nextInt();
+         fecha= new Date (dia/mes/anio);
+        int numSugerencia = 0;
+        int i = numSugerencia++;
+        listaSugerencias [i] =new Sugerencia(descricion, fecha);
     }
 
     /**
      * Método para validar la sugerencia creada
-     *
      * @param s
      * @return
      */
     public boolean validarSugerencia(Sugerencia s) {
         boolean resp = false;
-        for (Sugerencia sugerencia : sugerencias) {
+        for (Sugerencia sugerencia : listaSugerencias) {
             if (sugerencia != null) {
                 if (sugerencia.equals(s)) {
                     resp = true;
@@ -546,13 +556,12 @@ public class Usuario {
 
     /**
      * Método para editar una sugerencia existente.
-     *
      * @param posicion
      * @param sugerencia
      *
      */
     public void editarSugerencia(int posicion, String sugerencia) {
-        sugerencias[posicion] = new Sugerencia();
+        listaSugerencias[posicion] = new Sugerencia();
     }
 
     /**
@@ -562,47 +571,43 @@ public class Usuario {
      * @return el objeto Usuario correspondiente a la sugerencia buscada, o null
      * si no se encuentra la sugerencia.
      */
-    public Sugerencia buscarSugerencia(int posicion) {
-        return sugerencias[posicion];
+    public  void buscarSugerencia(int posicion) {
+        return listaSugerencias[posicion];
     }
 
     /**
      * Método para listar todos las sugerencias creadas.
-     *
      * @return
      */
-    public String listarSugerencia() {
+    public void listarSugerencia() {
         String lista = "";
-        for (Sugerencia sugerencia : sugerencias) {
+        for (Sugerencia sugerencia : listaSugerencias) {
             if (sugerencia != null) {
                 lista += sugerencia + "\r\n";
             }
         }
         return lista;
-
     }
 
     /**
      * Método para eliminar una sugerencia existente.
-     *
      * @param posicion
      * @param sugerencia
      */
     public void eliminarSugerencia(int posicion, String sugerencia) {
         numSugerencias--;
         int a = 0;
-        Sugerencia[] eliAux = sugerencias;
-        sugerencias = new Sugerencia[numSugerencias];
+        Sugerencia[] eliAux = listaSugerencias;
+        listaSugerencias = new Sugerencia[numSugerencias];
         if (posicion < eliAux.length - 1) {
             if (posicion == eliAux.length - 1) {
-                System.arraycopy(eliAux, 0, sugerencias, 0, numSugerencias);
+                System.arraycopy(eliAux, 0, listaSugerencias, 0, numSugerencias);
 
             } else {
                 for (int i = 0; i < eliAux.length; i++) {
                     if (i != posicion) {
-                        sugerencias[a] = eliAux[i];
+                        listaSugerencias[a] = eliAux[i];
                         a++;
-
                     }
                 }
             }
