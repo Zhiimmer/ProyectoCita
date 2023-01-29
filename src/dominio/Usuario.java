@@ -1,7 +1,6 @@
 package dominio;
 
 import java.util.Scanner;
-import dominio.Sugerencia;
 import java.util.Date;
 
 /**
