@@ -22,12 +22,11 @@ public class CitaVirtual extends Cita {
         this.duracionLlamada = 0.0;
         this.plataforma = "No hay plataforma";
 //        this(0.0, "No hay plataforma");
-
     }
-/**
+    
+    /**
      * implementacion de la clase abstrascta de motivo
      */
-    @Override
     public void motivo(){
         System.out.println("El motivo de la cita poder pasar tiempo junto a la persona a traves del internet");
     }
@@ -42,7 +41,7 @@ public class CitaVirtual extends Cita {
      * @param plataforma plataforma utilizada para la llamada
      */
     public CitaVirtual(String horaAcordada, Date fecha, String motivo, double duracionLlamada, String plataforma) {
-        super(horaAcordada, fecha);
+        super(horaAcordada, fecha, motivo);
         this.duracionLlamada = duracionLlamada;
         this.plataforma = plataforma;
     }
@@ -53,11 +52,9 @@ public class CitaVirtual extends Cita {
      * @param citaV1 
      */
     public CitaVirtual(CitaVirtual citaV1) {
-        super(citaV1.horaAcordada, citaV1.fecha);
+        super(citaV1.horaAcordada, citaV1.fecha, citaV1.motivo);
         this.duracionLlamada = citaV1.getDuracionLlamada();
         this.plataforma = citaV1.getPlataforma();
-        //  this(citaV1.getDuracionLamada(), citaV1.getPlataforma());
-
     }
 
     /**
