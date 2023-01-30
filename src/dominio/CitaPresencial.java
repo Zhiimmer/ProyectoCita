@@ -14,7 +14,7 @@ public class CitaPresencial extends Cita {
     private String horaInicio;
     private String horaFinal;
     //private String motivo;
-    private static string lugar;
+    private static String lugar;
 
     /**
      * Creacion del constructor sin argumentos
