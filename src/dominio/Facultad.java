@@ -32,13 +32,11 @@ public class Facultad {
      * Metodo sin argumentos
      */
     public Facultad() {
-        this("Sistemas");
+        this("Ciencias aplicadas");
     }
 
-
     /**
-     * Constructor con argumentos. Inicializa el array de citas y el número de
-     * citas con los valores pasados como parámetros.
+     * Constructor con argumentos. Inicializa el array de citas y el número de citas con los valores pasados como parámetros.
      *
      * @param carreras
      * @param numCarreras
@@ -49,12 +47,10 @@ public class Facultad {
     }
 
     /**
-     * Método constructor referenciado a un objeto con la "sobre carga de
-     * métodos"
+     * Método constructor referenciado a un objeto con la "sobre carga de métodos"
      *
      * @param facu1
      */
-
     public Facultad(Facultad facu1) {
         this(facu1.getNombreFacultad());
     }
@@ -92,8 +88,7 @@ public class Facultad {
      * Creación del método equals
      *
      * @param o
-     * @return para saber si dos objetos son del mismo tipo y tienen los mismos
-     * datos
+     * @return para saber si dos objetos son del mismo tipo y tienen los mismos datos
      */
     @Override
     public boolean equals(Object o) {
@@ -108,6 +103,12 @@ public class Facultad {
         return false;
     }
 
+    /**
+     * Metodo crear carrera de la clase facultad
+     *
+     * @param carrera
+     */
+
     public void crearCarrera(String carrera) {
 
         //Creacion de un array para si es el caso agregue más carreras
@@ -121,6 +122,12 @@ public class Facultad {
 
     }
 
+    /**
+     * Metodo para validar carrera de la clase facultad
+     *
+     * @param c
+     * @return
+     */
     public boolean validarCarrera(Carrera c) {
         boolean resp = false;
         for (Carrera carrera : carreras) {
@@ -148,8 +155,7 @@ public class Facultad {
      * Método para buscar un lugar específico.
      *
      * @param posicion
-     * @return el objeto Facultad correspondiente a la carrera buscada, o null
-     * si no se encuentra la carrera.
+     * @return el objeto Facultad correspondiente a la carrera buscada, o null si no se encuentra la carrera.
      */
     public Carrera buscarCarrera(int posicion) {
         return carreras[posicion];
@@ -203,8 +209,7 @@ public class Facultad {
 
     //Metodo toString
     /**
-     * Este es un metódo que nos permite mostrar la información completa del
-     * objeto como una cadena de caracteres
+     * Este es un metódo que nos permite mostrar la información completa del objeto como una cadena de caracteres
      *
      * @return la información del objeto como una cadena de caracteres
      */
