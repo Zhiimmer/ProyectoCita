@@ -8,48 +8,83 @@ import java.util.Date;
  */
 public class CitaVirtual extends Cita {
 
-    //Atributo de la clase Cita Virtual
-    private double duracionLamada;
+    /**
+     * Clase que representa una cita virtual con atributos adicionales a una cita general.
+     */
+    private double duracionLlamada;
     private String plataforma;
 
     /**
-     * Creacion del constructor sin argumentos
+     * Constructor sin parametros que inicializa la duracion de la llamada en 0.0 y la plataforma en "No hay plataforma".
      */
     public CitaVirtual() {
         super();
-        this.duracionLamada = 0.0;
+        this.duracionLlamada = 0.0;
         this.plataforma = "No hay plataforma";
 //        this(0.0, "No hay plataforma");
 
     }
 
-    public CitaVirtual(String horaAcordada, Date fecha, String motivo, double duracionLamada, String plataforma) {
+    /**
+     * Constructor con parametros que inicializa los atributos de una cita virtual
+     *
+     * @param horaAcordada hora acordada para la cita
+     * @param fecha fecha acordada para la cita
+     * @param motivo motivo de la cita
+     * @param duracionLlamada duracion de la llamada
+     * @param plataforma plataforma utilizada para la llamada
+     */
+    public CitaVirtual(String horaAcordada, Date fecha, String motivo, double duracionLlamada, String plataforma) {
         super(horaAcordada, fecha, motivo);
-        this.duracionLamada = duracionLamada;
+        this.duracionLlamada = duracionLlamada;
         this.plataforma = plataforma;
     }
 
-    //Contructor referenciable
+    /**
+     * Constructor con llamada a objetos
+     *
+     * @param citaV1 
+     */
     public CitaVirtual(CitaVirtual citaV1) {
         super(citaV1.horaAcordada, citaV1.fecha, citaV1.motivo);
-        this.duracionLamada = citaV1.getDuracionLamada();
+        this.duracionLlamada = citaV1.getDuracionLlamada();
         this.plataforma = citaV1.getPlataforma();
         //  this(citaV1.getDuracionLamada(), citaV1.getPlataforma());
 
     }
 
-    public double getDuracionLamada() {
-        return duracionLamada;
+    /**
+     * Obtiene la duracion de la llamada
+     *
+     * @return duracion de la llamada
+     */
+    public double getDuracionLlamada() {
+        return duracionLlamada;
     }
 
-    public void setDuracionLamada(double duracionLamada) {
-        this.duracionLamada = duracionLamada;
+    /**
+     * Asigna una nueva duracion de la llamada
+     *
+     * @param duracionLamada duracion de la llamada
+     */
+    public void setDuracionLlamada(double duracionLamada) {
+        this.duracionLlamada = duracionLlamada;
     }
 
+    /**
+     * Obtiene la plataforma utilizada para la llamada
+     *
+     * @return plataforma utilizada para la llamada
+     */
     public String getPlataforma() {
         return plataforma;
     }
 
+    /**
+     * Asigna una nueva plataforma para la llamada
+     *
+     * @param plataforma nueva plataforma para la llamada
+     */
     public void setPlataforma(String plataforma) {
         this.plataforma = plataforma;
     }
