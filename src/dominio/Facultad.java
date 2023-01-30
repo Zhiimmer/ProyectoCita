@@ -29,11 +29,12 @@ public class Facultad {
     }
 
     /**
-     *Método constructor sin argumentos con la "sobre carga de métodos"
+     * Metodo sin argumentos
      */
     public Facultad() {
         this("Sistemas");
     }
+
 
     /**
      * Constructor con argumentos. Inicializa el array de citas y el número de
@@ -48,14 +49,14 @@ public class Facultad {
     }
 
     /**
-     * Constructor con referencia a objeto. Inicializa el array de citas y el
-     * número de citas con los valores del objeto pasado como parámetro.
+     * Método constructor referenciado a un objeto con la "sobre carga de
+     * métodos"
      *
-     * @param o objeto con los valores a ser copiados
+     * @param facu1
      */
-    public Facultad(Facultad o) {
-        this.carreras = o.carreras;
-        this.numCarreras = o.numCarreras;
+
+    public Facultad(Facultad facu1) {
+        this(facu1.getNombreFacultad());
     }
 
     /**
@@ -97,10 +98,10 @@ public class Facultad {
     @Override
     public boolean equals(Object o) {
         boolean resp = false;
-        Facultad f = null;
-        if (o != null && f instanceof Facultad) {
-            f = (Facultad) o;
-            if (nombreFacultad.equals(f.nombreFacultad)) {
+        Carrera f = null;
+        if (o != null && f instanceof Carrera) {
+            f = (Carrera) o;
+            if (nombreFacultad.equals(f.nombreCarrera)) {
                 resp = true;
             }
         }
@@ -201,7 +202,6 @@ public class Facultad {
     }
 
     //Metodo toString
-    
     /**
      * Este es un metódo que nos permite mostrar la información completa del
      * objeto como una cadena de caracteres

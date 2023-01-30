@@ -6,11 +6,12 @@ package dominio;
  */
 public class Carrera {
 
-    private String nombreCarrera;
+    String nombreCarrera;
     private String semestre;
 
     /**
-     *Método constructor con argumentos
+     * Método constructor con argumentos
+     *
      * @param nombreCarrera
      * @param semestre
      */
@@ -18,16 +19,25 @@ public class Carrera {
         this.nombreCarrera = nombreCarrera;
         this.semestre = semestre;
     }
-
+    
     /**
-     *Método constructor sin argumentos con la "sobre carga de métodos"
+     * Método constructor sin argumentos con la "sobre carga de métodos"
      */
     public Carrera() {
         this("Sistemas", "segundo");
     }
 
     /**
+     ** Método constructor referenciado a un objeto con la "sobre carga de
+     * métodos"
+     * @param carre1
+     */
+    public Carrera (Carrera carre1){
+        this (carre1.getNombreCarrera(), carre1.getSemestre());
+    }
+    /**
      * Método set y get
+     *
      * @return
      */
     public String getNombreCarrera() {
@@ -47,7 +57,6 @@ public class Carrera {
     }
 
     //Metodo toString
-    
     /**
      * Este es un metódo que nos permite mostrar la información completa del
      * objeto como una cadena de caracteres
