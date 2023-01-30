@@ -39,23 +39,29 @@ public class CitaPresencial extends Cita {
      *
      * @param horaAcordada hora acordada para la cita
      * @param fecha fecha acordada para la cita
-     * @param motivo motivo de la cita
      * @param horaInicio hora de inicio de la cita
      * @param horaFinal hora de finalización de la cita
      */
-    public CitaPresencial(String horaAcordada, Date fecha, String motivo, String horaInicio, String horaFinal) {
-        super(horaAcordada, fecha, motivo);
+    public CitaPresencial(String horaAcordada, Date fecha, String horaInicio, String horaFinal) {
+        super(horaAcordada, fecha);
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
     }
 
+     /**
+     * implementacion de la clase abstrascta de motivo
+     */
+    public void motivo(){
+        System.out.println("El motivo de la cita presencial es la posibillidad de conocerse en persona con su sugerencia");
+    }
+    
     /**
      * Constructor de copia
      *
      * @param presencial1 objeto CitaPresencial a copiar
      */
     public CitaPresencial(CitaPresencial presencial1) {
-        super(presencial1.horaAcordada, presencial1.fecha, presencial1.motivo);
+        super(presencial1.horaAcordada, presencial1.fecha);
         this.horaInicio = presencial1.horaInicio;
         this.horaFinal = presencial1.horaFinal;
     }
