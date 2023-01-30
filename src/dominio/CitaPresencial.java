@@ -1,6 +1,7 @@
 package dominio;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -9,150 +10,136 @@ import java.util.Date;
 public class CitaPresencial extends Cita {
 
     /**
-     * Creacion de los atributos de la clase Cita Presencial
+     * Clase que representa una cita presencial
      */
     private String horaInicio;
     private String horaFinal;
-    //private String motivo;
-    private static String lugar;
+    private static Cita lugares[];
+    private static int numLugares;
 
     /**
-     * Creacion del constructor sin argumentos
+     * Bloque estático que inicializa los atributos de la clase
+     */
+    static {
+        numLugares = 0;
+        lugares = new Cita[3];
+    }
+
+    /**
+     * Constructor por defecto que inicializa los atributos a valores por defecto
      */
     public CitaPresencial() {
         super();
-
-//        this.horaInicio = "No hay hora de inicio";
-//        this.horaFinal = "No hay hora de final";
-//        this.motivo = "No hay ningun asunto";
-//        this.lugar = "No hay lugares";
+        this.horaInicio = "No hay hora de inicio";
+        this.horaFinal = "No hay hora de final";
     }
 
     /**
-     * Crea una instancia de la clase Cita Presencial
+     * Constructor que recibe valores para inicializar los atributos
      *
-     * @param usuarios
-     * @param horaAcordada
-     * @param fecha
-     * @param numUsuario
-     * @param horaInicio nos indica hora de inicio de la cita
-     * @param horaFinal nos indica a que hora finaliza la cita
-     * @param motivo motivo por lo que se realiza la cita
-     * @param lugar
-     *
+     * @param horaAcordada hora acordada para la cita
+     * @param fecha fecha acordada para la cita
+     * @param motivo motivo de la cita
+     * @param horaInicio hora de inicio de la cita
+     * @param horaFinal hora de finalización de la cita
      */
-    public CitaPresencial(Usuario[] usuarios, String horaAcordada, Date fecha, int numUsuario, String horaInicio, String horaFinal, String motivo, String lugar) {
-        super(usuarios, horaAcordada, fecha, numUsuario);
+    public CitaPresencial(String horaAcordada, Date fecha, String motivo, String horaInicio, String horaFinal) {
+        super(horaAcordada, fecha, motivo);
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
-        this.motivo = motivo;
-        this.lugar = lugar;
-    }
-
-    //Contructor referenciable
-    public CitaPresencial(CitaPresencial presencial1) {
-//        this.horaInicio = presencial1.getHoraInicio();
-//        this.horaFinal = presencial1.getHoraFinal();
-//        this.motivo = presencial1.getMotivo();
-//        this.lugar = presencial1.getLugar();
-
     }
 
     /**
-     * Metodos Getter que nos permite mostrar el valor del atributo de la clase Cita Presencial
+     * Constructor de copia
      *
-     * @return nos regresa los atributos de la clase Cita Presencial
+     * @param presencial1 objeto CitaPresencial a copiar
+     */
+    public CitaPresencial(CitaPresencial presencial1) {
+        super(presencial1.horaAcordada, presencial1.fecha, presencial1.motivo);
+        this.horaInicio = presencial1.horaInicio;
+        this.horaFinal = presencial1.horaFinal;
+    }
+
+    /**
+     * Método que obtiene la hora de inicio de la cita
+     *
+     * @return hora de inicio de la cita
      */
     public String getHoraInicio() {
         return horaInicio;
     }
 
     /**
+     * Método que establece la hora de inicio de la cita
      *
-     * @return
-     */
-    public String getHoraFinal() {
-        return horaFinal;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    /**
-     * Metodo Setter que sirve para modificar el valor
-     *
-     * @param horaInicio
+     * @param horaInicio hora de inicio de la cita
      */
     public void setHoraInicio(String horaInicio) {
         this.horaInicio = horaInicio;
     }
 
     /**
-     * Metodo Setter que sirve para modificar el valor
+     * Método que obtiene la hora final de la cita
      *
-     * @param horaFinal
+     * @return hora final de la cita
+     */
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+
+    /**
+     * Método que establece la hora final de la cita
+     *
+     * @param horaFinal hora final de la cita
      */
     public void setHoraFinal(String horaFinal) {
         this.horaFinal = horaFinal;
     }
 
     /**
-     * Metodo Setter que sirve para modificar el valor
+     * Método para obtener el arreglo de lugares.
      *
-     * @param motivo
+     * @return Arreglo de citas.
      */
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
+    public static Cita[] getLugares() {
+        return lugares;
     }
 
     /**
-     * Método para convertir a String el objeto en Java
+     * Método para establecer el arreglo de lugares.
      *
-     * @return Se poner en cadena de texto todos los atributos de la clase Cita Presencial
+     * @param lugares Arreglo de citas a establecer.
+     */
+    public static void setLugares(Cita[] lugares) {
+        CitaPresencial.lugares = lugares;
+    }
+
+    /**
+     * Método para obtener el número de lugares.
+     *
+     * @return Número de lugares.
+     */
+    public static int getNumLugares() {
+        return numLugares;
+    }
+
+    /**
+     * Método para establecer el número de lugares.
+     *
+     * @param numLugares Número de lugares a establecer.
+     */
+    public static void setNumLugares(int numLugares) {
+        CitaPresencial.numLugares = numLugares;
+    }
+
+    /**
+     * Método toString para imprimir los valores de horaInicio y horaFinal.
+     *
+     * @return Cadena con los valores de horaInicio y horaFinal.
      */
     @Override
     public String toString() {
-        return "\nhoraInicio = " + horaInicio + " \nhoraFinal = " + horaFinal
-                + " \nmotivo = " + motivo;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final CitaPresencial other = (CitaPresencial) obj;
-        if (!Objects.equals(this.horaInicio, other.horaInicio)) {
-            return false;
-        }
-        if (!Objects.equals(this.horaFinal, other.horaFinal)) {
-            return false;
-        }
-        if (!Objects.equals(this.motivo, other.motivo)) {
-            return false;
-        }
-        return Objects.equals(this.lugar, other.lugar);
+        return "\nhoraInicio = " + horaInicio + " \nhoraFinal = " + horaFinal;
     }
 
 }
