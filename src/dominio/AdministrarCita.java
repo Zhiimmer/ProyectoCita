@@ -4,7 +4,7 @@ package dominio;
  *
  * @author Edu. N
  */
-public class AdministrarCita {
+public abstract class AdministrarCita {
 
     /**
      * Array de citas
@@ -15,6 +15,7 @@ public class AdministrarCita {
      */
     private static int numCitas;
 
+    public abstract void motivo();
     /**
      * Bloque estático. Inicializa el array de citas con un tamaño de 3 y establece el número de citas en 0 al momento de crear la clase.
      */
@@ -72,7 +73,7 @@ public class AdministrarCita {
         int i = numCitas++;
         // System.out.println(i);
         //clientes[i] = new Cliente(idCliente, nombre, apellido);
-        citas[i] = new Cita();
+        citas[i] = new Cita() {};
 
     }
 
@@ -84,7 +85,7 @@ public class AdministrarCita {
      *
      */
     public void editarCita(int posicion, String lugar) {
-        citas[posicion] = new Cita();
+        citas[posicion] = new Cita() {};
     }
 
     /**
