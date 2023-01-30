@@ -1,4 +1,3 @@
-
 package dominio;
 
 import java.util.Date;
@@ -7,33 +6,36 @@ import java.util.Date;
  *
  * @author Ronny Alexis Paspuel Anchundia
  */
-public class CitaVirtual extends Cita{
+public class CitaVirtual extends Cita {
 
+    //Atributo de la clase Cita Virtual
     private double duracionLamada;
     private String plataforma;
-
-    //Atributo de la clase Cita
-    public CitaVirtual(Usuario[] usuarios, String horaAcordada, Date fecha, int numUsuario,double duracionLamada, String plataforma) {
-        super(usuarios, horaAcordada, fecha, numUsuario);
-        this.duracionLamada = duracionLamada;
-        this.plataforma = plataforma;
-    }
 
     /**
      * Creacion del constructor sin argumentos
      */
     public CitaVirtual() {
         super();
-        duracionLamada = 0.0;
-        plataforma = "No hay plataforma";
+        this.duracionLamada = 0.0;
+        this.plataforma = "No hay plataforma";
+//        this(0.0, "No hay plataforma");
 
     }
-//Contructor referenciable
 
+    public CitaVirtual(String horaAcordada, Date fecha, String motivo, double duracionLamada, String plataforma) {
+        super(horaAcordada, fecha, motivo);
+        this.duracionLamada = duracionLamada;
+        this.plataforma = plataforma;
+    }
+
+    //Contructor referenciable
     public CitaVirtual(CitaVirtual citaV1) {
-        super();
-       duracionLamada = citaV1.getDuracionLamada();
-       plataforma=citaV1.getPlataforma();
+        super(citaV1.horaAcordada, citaV1.fecha, citaV1.motivo);
+        this.duracionLamada = citaV1.getDuracionLamada();
+        this.plataforma = citaV1.getPlataforma();
+        //  this(citaV1.getDuracionLamada(), citaV1.getPlataforma());
+
     }
 
     public double getDuracionLamada() {
@@ -54,6 +56,6 @@ public class CitaVirtual extends Cita{
 
     @Override
     public String toString() {
-        return super.toString()+this.horaAcordada+this.plataforma;
+        return super.toString() + this.horaAcordada + this.plataforma;
     }
 }
