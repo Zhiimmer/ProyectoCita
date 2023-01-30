@@ -25,7 +25,13 @@ public class Carrera {
     public enum Carreras {
     SISTEMASINFORMACION,
     CIVIL,
-    DISEÑOINDUSTRIAL
+    DISEÑOINDUSTRIAL, 
+    QUIMICA,
+    MINAS,
+    PETROLEOS,
+    AMBIENTAL,
+    COMPUTACION, 
+    GEOLOGIA
 }
     
     /**
