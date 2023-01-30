@@ -11,7 +11,12 @@ public class TestAdminitrarCIta {
     public static void main(String[] args) {
 
         //Crear lugares
-        AdministrarCita cita = new AdministrarCita() {};
+        AdministrarCita cita = new AdministrarCita() {
+            @Override
+            public void motivo() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
         cita.crearCita("CISCO");
         cita.crearCita("Lab. Sistemas");
         cita.crearCita("Aso. Ciencias");

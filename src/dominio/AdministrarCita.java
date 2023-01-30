@@ -28,8 +28,8 @@ public abstract class AdministrarCita {
      * Constructor sin argumentos. Inicializa el array de citas con un tamaño de 3 y establece el número de citas en 0.
      */
     public AdministrarCita() {
-        this.citas = new Cita[3];
-        this.numCitas = 0;
+//        this.citas = new Cita[3];
+//        this.numCitas = 0;
         
     }
 
@@ -40,8 +40,8 @@ public abstract class AdministrarCita {
      * @param numCitas número de citas
      */
     public AdministrarCita(Cita[] citas, int numCitas) {
-        this.citas = citas;
-        this.numCitas = numCitas;
+//        this.citas = citas;
+//        this.numCitas = numCitas;
 
     }
 
@@ -51,8 +51,8 @@ public abstract class AdministrarCita {
      * @param o objeto con los valores a ser copiados
      */
     public AdministrarCita(AdministrarCita o) {
-        this.citas = o.citas;
-        this.numCitas = o.numCitas;
+//        this.citas = o.citas;
+//        this.numCitas = o.numCitas;
     }
     
     //Metodos CRUD de la clase 
