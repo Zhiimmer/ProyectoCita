@@ -24,7 +24,7 @@ public class Cita {
      * Metodo sin argumentos
      */
     public Cita() {
-        this("No hay hora Acordada", new Date(2000, 12, 13), "razon para la cita");
+        this("No hay hora Acordada", new Date(2000, 12, 13));
       
 
     }
@@ -34,12 +34,12 @@ public class Cita {
      *
      * @param horaAcordada
      * @param fecha
-     * @param motivo
+     
      */
-    public Cita(String horaAcordada, Date fecha, String motivo) {
+    public Cita(String horaAcordada, Date fecha) {
         this.horaAcordada = horaAcordada;
         this.fecha = fecha;
-        this.motivo = motivo;
+       
     }
 
     /**
@@ -48,7 +48,7 @@ public class Cita {
      * @param cita1
      */
     public Cita(Cita cita1) {
-       this(cita1.getHoraAcordada(), cita1.getFecha(), cita1.getMotivo());
+       this(cita1.getHoraAcordada(), cita1.getFecha());
     }
 
     /**
@@ -72,18 +72,13 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
-
     @Override
     public String toString() {
-        return "Cita{" + "horaAcordada=" + horaAcordada + ", fecha=" + fecha + ", motivo=" + motivo + '}';
+        return "Cita{" + "horaAcordada= " + horaAcordada + ", fecha= " + fecha + '}';
     }
+
+   
+ 
 
    
 
