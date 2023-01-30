@@ -19,6 +19,14 @@ public class Carrera {
         this.nombreCarrera = nombreCarrera;
         this.semestre = semestre;
     }
+    /**
+     * Metodo de enumerar 
+     */
+    public enum Carreras {
+    SISTEMASINFORMACION,
+    CIVIL,
+    DISEÑOINDUSTRIAL
+}
     
     /**
      * Método constructor sin argumentos con la "sobre carga de métodos"
