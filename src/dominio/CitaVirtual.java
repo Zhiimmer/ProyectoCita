@@ -36,12 +36,11 @@ public class CitaVirtual extends Cita {
      *
      * @param horaAcordada hora acordada para la cita
      * @param fecha fecha acordada para la cita
-     * @param motivo motivo de la cita
      * @param duracionLlamada duracion de la llamada
      * @param plataforma plataforma utilizada para la llamada
      */
-    public CitaVirtual(String horaAcordada, Date fecha, String motivo, double duracionLlamada, String plataforma) {
-        super(horaAcordada, fecha, motivo);
+    public CitaVirtual(String horaAcordada, Date fecha, double duracionLlamada, String plataforma) {
+        super(horaAcordada, fecha);
         this.duracionLlamada = duracionLlamada;
         this.plataforma = plataforma;
     }
@@ -52,7 +51,7 @@ public class CitaVirtual extends Cita {
      * @param citaV1 
      */
     public CitaVirtual(CitaVirtual citaV1) {
-        super(citaV1.horaAcordada, citaV1.fecha, citaV1.motivo);
+        super(citaV1.horaAcordada, citaV1.fecha);
         this.duracionLlamada = citaV1.getDuracionLlamada();
         this.plataforma = citaV1.getPlataforma();
     }
