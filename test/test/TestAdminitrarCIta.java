@@ -11,7 +11,7 @@ public class TestAdminitrarCIta {
     public static void main(String[] args) {
 
         //Crear lugares
-        AdministrarCita cita = new AdministrarCita();
+        AdministrarCita cita = new AdministrarCita() {};
         cita.crearCita("CISCO");
         cita.crearCita("Lab. Sistemas");
         cita.crearCita("Aso. Ciencias");
