@@ -536,83 +536,83 @@ public class Usuario {
         listaSugerencias [i] =new Sugerencia(descricion, fecha);
     }
 
-    /**
-     * Método para validar la sugerencia creada
-     * @param s
-     * @return
-     */
-    public boolean validarSugerencia(Sugerencia s) {
-        boolean resp = false;
-        for (Sugerencia sugerencia : listaSugerencias) {
-            if (sugerencia != null) {
-                if (sugerencia.equals(s)) {
-                    resp = true;
-                }
-            }
-        }
-        return resp;
-    }
-
-    /**
-     * Método para editar una sugerencia existente.
-     * @param posicion
-     * @param sugerencia
-     *
-     */
-    public void editarSugerencia(int posicion, String sugerencia) {
-        listaSugerencias[posicion] = new Sugerencia();
-    }
-
-    /**
-     * Método para buscar una sugerencia específica.
-     *
-     * @param posicion
-     * @return el objeto Usuario correspondiente a la sugerencia buscada, o null
-     * si no se encuentra la sugerencia.
-     */
-    public  void buscarSugerencia(int posicion) {
-        return listaSugerencias[posicion];
-    }
-
-    /**
-     * Método para listar todos las sugerencias creadas.
-     * @return
-     */
-    public void listarSugerencia() {
-        String lista = "";
-        for (Sugerencia sugerencia : listaSugerencias) {
-            if (sugerencia != null) {
-                lista += sugerencia + "\r\n";
-            }
-        }
-        return lista;
-    }
-
-    /**
-     * Método para eliminar una sugerencia existente.
-     * @param posicion
-     * @param sugerencia
-     */
-    public void eliminarSugerencia(int posicion, String sugerencia) {
-        numSugerencias--;
-        int a = 0;
-        Sugerencia[] eliAux = listaSugerencias;
-        listaSugerencias = new Sugerencia[numSugerencias];
-        if (posicion < eliAux.length - 1) {
-            if (posicion == eliAux.length - 1) {
-                System.arraycopy(eliAux, 0, listaSugerencias, 0, numSugerencias);
-
-            } else {
-                for (int i = 0; i < eliAux.length; i++) {
-                    if (i != posicion) {
-                        listaSugerencias[a] = eliAux[i];
-                        a++;
-                    }
-                }
-            }
-        } else {
-            System.out.println("No existe la posicion: " + posicion);
-
-        }
-    }
+//    /**
+//     * Método para validar la sugerencia creada
+//     * @param s
+//     * @return
+//     */
+//    public boolean validarSugerencia(Sugerencia s) {
+//        boolean resp = false;
+//        for (Sugerencia sugerencia : listaSugerencias) {
+//            if (sugerencia != null) {
+//                if (sugerencia.equals(s)) {
+//                    resp = true;
+//                }
+//            }
+//        }
+//        return resp;
+//    }
+//
+//    /**
+//     * Método para editar una sugerencia existente.
+//     * @param posicion
+//     * @param sugerencia
+//     *
+//     */
+//    public void editarSugerencia(int posicion, String sugerencia) {
+//        listaSugerencias[posicion] = new Sugerencia();
+//    }
+//
+//    /**
+//     * Método para buscar una sugerencia específica.
+//     *
+//     * @param posicion
+//     * @return el objeto Usuario correspondiente a la sugerencia buscada, o null
+//     * si no se encuentra la sugerencia.
+//     */
+//    public  void buscarSugerencia(int posicion) {
+//        return listaSugerencias[posicion];
+//    }
+//
+//    /**
+//     * Método para listar todos las sugerencias creadas.
+//     * @return
+//     */
+//    public void listarSugerencia() {
+//        String lista = "";
+//        for (Sugerencia sugerencia : listaSugerencias) {
+//            if (sugerencia != null) {
+//                lista += sugerencia + "\r\n";
+//            }
+//        }
+//        return lista;
+//    }
+//
+//    /**
+//     * Método para eliminar una sugerencia existente.
+//     * @param posicion
+//     * @param sugerencia
+//     */
+//    public void eliminarSugerencia(int posicion, String sugerencia) {
+//        numSugerencias--;
+//        int a = 0;
+//        Sugerencia[] eliAux = listaSugerencias;
+//        listaSugerencias = new Sugerencia[numSugerencias];
+//        if (posicion < eliAux.length - 1) {
+//            if (posicion == eliAux.length - 1) {
+//                System.arraycopy(eliAux, 0, listaSugerencias, 0, numSugerencias);
+//
+//            } else {
+//                for (int i = 0; i < eliAux.length; i++) {
+//                    if (i != posicion) {
+//                        listaSugerencias[a] = eliAux[i];
+//                        a++;
+//                    }
+//                }
+//            }
+//        } else {
+//            System.out.println("No existe la posicion: " + posicion);
+//
+//        }
+//    }
 }
