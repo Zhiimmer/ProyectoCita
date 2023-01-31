@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author joha
  */
-public abstract class Cita {
+public  abstract class Cita {
 
     /**
      * Atributos de la clase

@@ -28,6 +28,12 @@ public class Facultad {
         this.nombreFacultad = nombreFacultad;
     }
 
+     public enum Facultades {
+    INGENIERIAQUIMICA,
+    INGENIERIAYCIENCIASAPLICADAS,
+    INGENIERIAENGEOLOGIAMINASPETRÓLEOSYAMBIENTAL, 
+   
+}
     /**
      * Metodo sin argumentos
      */
