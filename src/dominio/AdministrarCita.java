@@ -4,7 +4,7 @@ package dominio;
  *
  * @author Edu. N
  */
-public abstract class AdministrarCita {
+public class AdministrarCita {
 
     /**
      * Array de citas
@@ -15,7 +15,7 @@ public abstract class AdministrarCita {
      */
     private static int numCitas;
 
-    public abstract void motivo();
+    
     /**
      * Bloque estático. Inicializa el array de citas con un tamaño de 3 y establece el número de citas en 0 al momento de crear la clase.
      */

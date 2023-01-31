@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author joha
  */
-public class Cita {
+public abstract class Cita {
 
     /**
      * Atributos de la clase
@@ -19,6 +19,7 @@ public class Cita {
     protected String horaAcordada;
     protected Date fecha;
     protected String motivo;
+//    public abstract void motivo();
 
     /**
      * Metodo sin argumentos
