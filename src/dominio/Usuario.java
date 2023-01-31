@@ -615,4 +615,44 @@ public class Usuario {
 //
 //        }
 //    }
+     public static void crearUsuario() {
+        Scanner lector = new Scanner(System.in);
+        String nombre;
+        String apellido; 
+        String correoInstitucional;
+        String generoMusical;
+        String colorFav;
+        String comidaFav;
+        String libroFav;
+        String animalFav;
+        String peliculaFav;
+        String signoZodiacal;
+        String hobby;
+        boolean fumadorSocial;
+        int edad;
+        System.out.println("Ingrese nombre :");
+        nombre= lector.next();
+       System.out.println("Ingrese apellido :");
+         apellido=lector.next();
+         System.out.println("Ingrese correo Institucuinal :");
+         correoInstitucional=lector.next();
+         System.out.println("Ingrese el genero Musical :");
+         generoMusical=lector.next();
+         System.out.println("Ingrese color favorito :");
+         colorFav=lector.next();
+         System.out.println("Ingrese comida favorita :");
+         comidaFav=lector.next();
+         System.out.println("Ingrese libro favorito:");
+         libroFav=lector.next();
+         System.out.println("Ingrese animal favorito :");
+         animalFav=lector.next();
+         System.out.println("Ingrese pelicuka favorita :");
+         peliculaFav=lector.next();
+         System.out.println("Ingrese signo zodiacal :");
+         signoZodiacal=lector.next();
+         System.out.println("Ingrese hobbyh :");
+         hobby=lector.next();
+         System.out.println("Ingrese edad :");
+         edad=lector.nextInt();
+    }
 }
