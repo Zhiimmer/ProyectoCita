@@ -9,13 +9,21 @@ public class Carrera {
     //Atributos
     String nombreCarrera;
     private String semestre;
-    private final String nomCarrera = null;
+    private final String SISTEMASINFORMACION = "1. SISTEMAS INFORMACION";
+    private final String CIVIL = "2. CIVIL";
+    private final String DISEÑOINDUSTRIAL = "3. DISEÑO INDUSTRIAL";
+    private final String QUIMICA = "4. QUIMICA";
+    private final String MINAS = "5. MINAS";
+    private final String PETROLEOS = "6. PETROLEOS";
+    private final String AMBIENTAL = "7. AMBIENTAL";
+    private final String COMPUTACION = "8. COMPUTACION";
+    private final String GEOLOGIA = "9. GEOLOGIA";
 
     /**
      * Método constructor sin argumentos con la "sobre carga de métodos"
      */
     public Carrera() {
-        this("Sistemas", "segundo", "Civil");
+        this("Sistemas", "segundo");
     }
 
     /**
@@ -24,11 +32,11 @@ public class Carrera {
      * @param nombreCarrera
      * @param semestre
      */
-    public Carrera(String nombreCarrera, String semestre, String nomCarrera) {
+    public Carrera(String nombreCarrera, String semestre) {
         this.nombreCarrera = nombreCarrera;
         this.semestre = semestre;
     }
-
+    
     /**
      * Metodo de enumerar
      */
@@ -43,6 +51,21 @@ public class Carrera {
         COMPUTACION,
         GEOLOGIA
     }
+    
+    /**
+     * Método para mostrar la enumeración de las carreras
+     */
+    public void mostarnNumCarrera() {
+        System.out.println(SISTEMASINFORMACION);
+        System.out.println(CIVIL);
+        System.out.println(DISEÑOINDUSTRIAL);
+        System.out.println(QUIMICA);
+        System.out.println(MINAS);
+        System.out.println(PETROLEOS);
+        System.out.println(AMBIENTAL);
+        System.out.println(COMPUTACION);
+        System.out.println(GEOLOGIA);
+    }
    
     /**
      ** Método constructor referenciado a un objeto con la "sobre carga de
@@ -51,7 +74,7 @@ public class Carrera {
      * @param carre1
      */
     public Carrera(Carrera carre1) {
-        this(carre1.getNombreCarrera(), carre1.getSemestre(), carre1.getNomCarrera());
+        this(carre1.getNombreCarrera(), carre1.getSemestre());
     }
 
     /**
@@ -73,10 +96,6 @@ public class Carrera {
 
     public void setSemestre(String semestre) {
         this.semestre = semestre;
-    }
-
-    public String getNomCarrera() {
-        return nomCarrera;
     }
    
     //Metodo toString

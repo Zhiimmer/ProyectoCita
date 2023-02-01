@@ -9,7 +9,10 @@ public class Facultad {
     private String nombreFacultad;
     private static Carrera carreras[];
     private static int numCarreras;
-
+    private final String INGENIERIA_QUIMICA = "1. INGENIERIA_QUIMICA";
+    private final String INGENIERIA_Y_CIENCIAS_APLICADAS = "2. INGENIERIA_Y_CIENCIAS_APLICADAS";
+    private final String INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL = "3. INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL";
+       
     /**
      * Bloque estático
      */
@@ -28,12 +31,24 @@ public class Facultad {
         this.nombreFacultad = nombreFacultad;
     }
 
-     public enum Facultades {
-    INGENIERIAQUIMICA,
-    INGENIERIAYCIENCIASAPLICADAS,
-    INGENIERIAENGEOLOGIAMINASPETRÓLEOSYAMBIENTAL, 
-   
-}
+    /**
+     * Enum para representar las diferentes facultades
+     */
+    public enum Facultades {
+        INGENIERIA_QUIMICA,
+        INGENIERIA_Y_CIENCIAS_APLICADAS,
+        INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL,
+    }
+    
+    /**
+     * Método para mostrar la enumeración de las facultades
+     */
+    public void mostarnNumFacultad() {
+        System.out.println(INGENIERIA_QUIMICA);
+        System.out.println(INGENIERIA_Y_CIENCIAS_APLICADAS);
+        System.out.println(INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL);
+    }
+
     /**
      * Metodo sin argumentos
      */
@@ -114,7 +129,6 @@ public class Facultad {
      *
      * @param carrera
      */
-
     public void crearCarrera(String carrera) {
 
         //Creacion de un array para si es el caso agregue más carreras
