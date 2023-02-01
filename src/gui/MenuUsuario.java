@@ -15,19 +15,20 @@ import dominio.Usuario;
  */
 public class MenuUsuario {
     Scanner sc = new Scanner(System.in);
-    Carrera usuario = new Carrera();
-    
+
+    Usuario sugerencia = new Usuario();
+
     public void setOpc(int opcm) throws ParseException {
         int opcion;
         System.out.println("---------------------------------------");
-        System.out.println("           Submenú de Usuarios            ");
+        System.out.println("         Submenú de Sugerencias        ");
         System.out.println("---------------------------------------");
         System.out.println("");
         System.out.println("Menú de opciones:");
-        System.out.println("1. Crear usuario");
-        System.out.println("2. Modificar usuario");
-        System.out.println("3. Consultar usuario");
-        System.out.println("4. Eliminar usuario");
+        System.out.println("1. Crear Sugerencia ");
+        System.out.println("2. Modificar Sugerencia");
+        System.out.println("3. Consultar Sugerencia");
+        System.out.println("4. Eliminar Sugerencia");
         System.out.println("5. Regresar al Menú Principal");
         System.out.println("");
         System.out.println("Escoja una opción: ");
@@ -35,30 +36,26 @@ public class MenuUsuario {
         switch (opcion) {
 
             case 1 -> {
-               
+                Usuario.crearSugerencia();
+                System.out.println("Se creo con exito!");
                 setOpc(1);
-
             }
             case 2 -> {
-//                
+                //Usuario.modificarSugerencia(1, "");
+                System.out.println("Se modifico con exito!");
                 setOpc(1);
-
             }
             case 3 -> {
-
+                Usuario.buscarSugerencia(1);
                 setOpc(1);
             }
             case 4 -> {
-
-                
+                Usuario.eliminarSugerencia(1);
                 setOpc(1);
-                
-
             }
             case 5 -> {
-                
+                System.out.println("Regresando al Menú Principal...");
                 Menu.Menu1();
-
             }
             default -> {
                 System.out.println("Opcion no valida");

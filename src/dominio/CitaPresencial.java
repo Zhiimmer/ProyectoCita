@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author Edu. N
  */
-public class CitaPresencial extends Cita {
+public class CitaPresencial extends Cita  {
 
     /**
      * Clase que representa una cita presencial
@@ -48,13 +48,13 @@ public class CitaPresencial extends Cita {
         this.horaFinal = horaFinal;
     }
 
-     /**
+    /**
      * implementacion de la clase abstrascta de motivo
      */
-    public void motivo(){
-        System.out.println("El motivo de la cita presencial es la posibillidad de conocerse en persona con su sugerencia");
+    public void setMotivo() {
+        this.motivo = "El motivo de la cita presencial es la posibillidad de conocerse en persona con su sugerencia";
     }
-    
+
     /**
      * Constructor de copia
      *
@@ -148,4 +148,5 @@ public class CitaPresencial extends Cita {
         return "\nhoraInicio = " + horaInicio + " \nhoraFinal = " + horaFinal;
     }
 
+    
 }

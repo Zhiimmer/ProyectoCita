@@ -62,7 +62,9 @@ public class AdministrarCita {
      *
      * @param lugar el nombre del nuevo lugar.
      */
-    public void crearCita(String lugar) {
+//    public void crearCita(String lugar) {
+        public void crearCita(Cita cita) {
+
 
         //Creacion de un array para si es el caso agregue más clientes
         if (numCitas == citas.length) {
@@ -73,7 +75,7 @@ public class AdministrarCita {
         int i = numCitas++;
         // System.out.println(i);
         //clientes[i] = new Cliente(idCliente, nombre, apellido);
-        citas[i] = new Cita() {};
+        citas[i] = cita;
 
     }
 

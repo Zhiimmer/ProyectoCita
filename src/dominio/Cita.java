@@ -6,12 +6,13 @@ package dominio;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  *
  * @author joha
  */
-public  abstract class Cita {
+public abstract class Cita {
 
     /**
      * Atributos de la clase
@@ -19,14 +20,13 @@ public  abstract class Cita {
     protected String horaAcordada;
     protected Date fecha;
     protected String motivo;
-//    public abstract void motivo();
+    public abstract void setMotivo( );
 
     /**
      * Metodo sin argumentos
      */
     public Cita() {
         this("No hay hora Acordada", new Date(2000, 12, 13));
-      
 
     }
 
@@ -35,12 +35,12 @@ public  abstract class Cita {
      *
      * @param horaAcordada
      * @param fecha
-     
+     *
      */
     public Cita(String horaAcordada, Date fecha) {
         this.horaAcordada = horaAcordada;
         this.fecha = fecha;
-       
+
     }
 
     /**
@@ -49,7 +49,7 @@ public  abstract class Cita {
      * @param cita1
      */
     public Cita(Cita cita1) {
-       this(cita1.getHoraAcordada(), cita1.getFecha());
+        this(cita1.getHoraAcordada(), cita1.getFecha());
     }
 
     /**
@@ -77,11 +77,20 @@ public  abstract class Cita {
     public String toString() {
         return "Cita{" + "horaAcordada= " + horaAcordada + ", fecha= " + fecha + '}';
     }
+    
+    
 
-   
- 
-
-   
+//    public String IniciarSesion(String user, String pass) {
+//        Scanner src = new Scanner(System.in);
+//        String user;
+//        String pass;
+//        System.out.println("Ingrese el Nombre del Usuario");
+//        user = src.next();
+//        System.out.println("Ingrese su clave personal");
+//        pass = src.next();
+//        System.out.println("Bienvenido al Menú Cupido Cabezón" + user);
+//
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -100,5 +109,6 @@ public  abstract class Cita {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.fecha);
         return hash;
-}        
+    }
+
 }
