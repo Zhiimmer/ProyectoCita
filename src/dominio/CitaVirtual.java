@@ -27,6 +27,7 @@ public class CitaVirtual extends Cita {
     /**
      * implementacion de la clase abstrascta de motivo
      */
+    @Override
     public void setMotivo(){
         this.motivo="El motivo de la cita poder pasar tiempo junto a la persona a traves del internet";
     }
