@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Scanner;
@@ -62,20 +64,22 @@ public abstract class Cita {
     }
 
    
-    public void setHoraAcordada(String horaAcordada) {
-    try {
-        this.horaAcordada = horaAcordada;
-    } catch (Exception e) {
-        System.out.println("Error al establecer hora acordada: " + e.getMessage());
-    }
-}
+   public void setHoraAcordada(String horaAcordada) {
+      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+      try {
+         Date fechaHora = formatoHora.parse(horaAcordada);
+         System.out.println("Hora en formato: " + fechaHora);
+      } catch (ParseException e) {
+         System.out.println("Excepción al cambiar la hora acordada : " + e.getMessage());
+      }
+   }
 
     public Date getFecha() {
         return fecha;
     }
 
     public void setFecha(Date fecha) {
-    try {
+     try {
         this.fecha = fecha;
     } catch (Exception e) {
         System.out.println("Error al establecer fecha: " + e.getMessage());
