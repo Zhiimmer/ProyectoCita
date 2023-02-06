@@ -70,7 +70,7 @@ public class Usuario {
     /**
      * Arreglo de las sugerencias creadas
      */
-    private static Sugerencia[] listaSugerencias = new Sugerencia[0];
+    private static Sugerencia sugerencias[];
     /**
      * Número de sugerencias
      */
@@ -88,6 +88,7 @@ public class Usuario {
      * Bloque estático
      */
     static {
+        sugerencias = new Sugerencia[3];
         numSugerencias = 0;
         Usuarios = new Usuario[2];
         numUsuarios = 0;
@@ -427,24 +428,6 @@ public class Usuario {
     }
 
     /**
-     * Lee la compatibilidad del usuario
-     *
-     * @return sugerencias del usuarii
-     */
-    public static Sugerencia[] getSugerencias() {
-        return listaSugerencias;
-    }
-
-    /**
-     * Modifica las sugerencias del usuario
-     *
-     * @param sugerencias sugerencias del usuario
-     */
-    public static void setSugerencias(Sugerencia[] sugerencias) {
-        Usuario.listaSugerencias = sugerencias;
-    }
-
-    /**
      * Lee el número de sugerencias del usuario
      *
      * @return Número de sugerencias del usuario
@@ -453,6 +436,22 @@ public class Usuario {
         return numSugerencias;
     }
 
+    /**
+     * 
+     * @return 
+     */
+    public static Sugerencia[] getSugerencias() {
+        return sugerencias;
+    }
+
+    /**
+     * 
+     * @param sugerencias 
+     */
+    public static void setSugerencias(Sugerencia[] sugerencias) {
+        Usuario.sugerencias = sugerencias;
+    }
+    
     /**
      * Modifica el número de sugerencias del usuario
      *
@@ -521,38 +520,32 @@ public class Usuario {
     /**
      * Método para crear una nueva sugerencia.
      *
+     * @param sugerencia la sugerencia nueva.
      */
-    public static void crearSugerencia() {
-        Scanner lector = new Scanner(System.in);
-        String descripcion;
-        Calendar fecha = Calendar.getInstance();
-        System.out.println("Ingrese la sugerencia :");
-        descripcion = lector.nextLine();
-        System.out.println("Ingrese la fecha :");
-        System.out.println("Ingrese el día :");
-        int dia = lector.nextInt();
-        System.out.println("Ingrese el mes :");
-        int mes = lector.nextInt();
-        System.out.println("Ingrese el año :");
-        int anio = lector.nextInt();
-        fecha.set(anio, mes - 1, dia);
-        int numSugerencia = 0;
-        int i = numSugerencia++;
-        listaSugerencias[i] = new Sugerencia(descripcion, fecha.getTime());
-    }
+    public void crearSugerencia(String sugerencia) throws DuplicadoException{
 
+        //Creacion de un array para si es el caso agregue más clientes
+        if (numSugerencias == sugerencias.length) {
+            Sugerencia[] aux = new Sugerencia[sugerencias.length + 1];
+            System.arraycopy(sugerencias, 0, aux, 0, sugerencias.length);
+            sugerencias = aux;
+            throw new DuplicadoException("La sugerencia ya existe");
+        }
+        int i = numSugerencias++;
+        sugerencias[i] = new Sugerencia();
+    }
+    
     /**
      * Método para validar la sugerencia creada
-     *
      * @param s
-     * @return
+     * @return 
      */
-    public boolean validarSugerencia(Sugerencia s) {
+    public boolean validarSugerencia(Sugerencia s) throws DuplicadoException{
         boolean resp = false;
-        for (Sugerencia sugerencia : listaSugerencias) {
+        for (Sugerencia sugerencia : sugerencias) {
             if (sugerencia != null) {
                 if (sugerencia.equals(s)) {
-                    resp = true;
+                    throw new DuplicadoException("La sugerencia ya existe"+ sugerencia);
                 }
             }
         }
@@ -566,34 +559,36 @@ public class Usuario {
      * @param sugerencia
      *
      */
-    public static void modificarSugerencia(int posicion, Sugerencia sugerencia) {
-        listaSugerencias[posicion] = sugerencia;
+    public void editarSugerencia(int posicion, String sugerencia) {
+        sugerencias[posicion] = new Sugerencia();
     }
 
     /**
      * Método para buscar una sugerencia específica.
      *
      * @param posicion
-     * @return el objeto Usuario correspondiente a la sugerencia buscada, o null
-     * si no se encuentra la sugerencia.
+     * @return el objeto Usuario correspondiente a la sugerencia buscada, o null si
+     * no se encuentra la sugerencia.
      */
-    public static Sugerencia buscarSugerencia(int posicion) {
-        return listaSugerencias[posicion];
+    public Sugerencia buscarSugerencia(int posicion) {
+        return sugerencias[posicion];
     }
 
     /**
-     * Método para listar todas las sugerencias creadas.
+     * Método para listar todos las sugerencias creadas.
      *
      * @return
      */
-    public static void listarSugerencias() {
+    public String listarSugerencia() throws SugerenciaNoEncontradaException{
         String lista = "";
-        for (Object sugerencia : listaSugerencias) {
+        for (Sugerencia sugerencia : sugerencias) {
             if (sugerencia != null) {
-                lista += sugerencia.toString() + "\r\n";
+                lista += sugerencia + "\r\n";
+                throw new SugerenciaNoEncontradaException(2, "La sugerencia no se encontro");
             }
         }
-        System.out.println(lista);
+        return lista;
+
     }
 
     /**
@@ -602,16 +597,27 @@ public class Usuario {
      * @param posicion
      * @param sugerencia
      */
-    public static void eliminarSugerencia(int posicion) {
+    public void eliminarSugerencia(int posicion, String sugerencia) throws SugerenciaNoEncontradaException{
         numSugerencias--;
         int a = 0;
-        Sugerencia[] eliAux = listaSugerencias;
-        listaSugerencias = new Sugerencia[numSugerencias];
+        Sugerencia[] eliAux = sugerencias;
+        sugerencias = new Sugerencia[numSugerencias];
         if (posicion < eliAux.length - 1) {
-            System.arraycopy(eliAux, 0, listaSugerencias, 0, posicion);
-            System.arraycopy(eliAux, posicion + 1, listaSugerencias, posicion, eliAux.length - posicion - 1);
-        } else if (posicion == eliAux.length - 1) {
-            System.arraycopy(eliAux, 0, listaSugerencias, 0, numSugerencias);
+            if (posicion == eliAux.length - 1) {
+                System.arraycopy(eliAux, 0, sugerencias, 0, numSugerencias);
+                throw new SugerenciaNoEncontradaException(1, "La sugerencia no se encuentro");
+            } else {
+                for (int i = 0; i < eliAux.length; i++) {
+                    if (i != posicion) {
+                        sugerencias[a] = eliAux[i];
+                        a++;
+
+                    }
+                }
+            }
+        } else {
+            System.out.println("No existe la posicion: " + posicion);
+
         }
     }
 }

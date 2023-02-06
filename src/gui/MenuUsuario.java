@@ -36,7 +36,7 @@ public class MenuUsuario {
         switch (opcion) {
 
             case 1 -> {
-                Usuario.crearSugerencia();
+                //Usuario.crearSugerencia();
                 System.out.println("Se creo con exito!");
                 setOpc(1);
             }
@@ -46,11 +46,11 @@ public class MenuUsuario {
                 setOpc(1);
             }
             case 3 -> {
-                Usuario.buscarSugerencia(1);
+                //Usuario.buscarSugerencia(1);
                 setOpc(1);
             }
             case 4 -> {
-                Usuario.eliminarSugerencia(1);
+                //Usuario.eliminarSugerencia(1);
                 setOpc(1);
             }
             case 5 -> {
