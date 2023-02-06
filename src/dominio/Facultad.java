@@ -170,13 +170,13 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      * @param c
      * @return
      */
-    public boolean validarCarrera(Carrera c) {
+    public boolean validarCarrera(Carrera c)throws DuplicadoException {
         boolean resp = false;
         for (Carrera carrera : carreras) {
             if (carrera != null) {
                 if (carrera.equals(c)) {
                     resp = true;
-                }
+                }throw new DuplicadoException ("elemento duplicado", carrera);
             }
         }
         return resp;
