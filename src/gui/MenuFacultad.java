@@ -45,12 +45,12 @@ public class MenuFacultad {
                 setOpc(1);
 
             }
-            case 2 -> {
-                carrera.editarCarrera(1, "Ing. Petroleo");
-                System.out.println("Se modifico con exito!");
-                setOpc(1);
-
-            }
+//            case 2 -> {
+//                carrera.editarCarrera(1, "Ing. Petroleo");
+//                System.out.println("Se modifico con exito!");
+//                setOpc(1);
+//
+//            }
             case 3 -> {
 
                 carrera.listarCarrera();

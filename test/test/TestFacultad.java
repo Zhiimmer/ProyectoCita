@@ -28,7 +28,7 @@ public class TestFacultad {
         
         //Editar los carreras
         System.out.println("Se va a editar el lugar Ing. Sistemas por Ing Civil");
-        carrera.editarCarrera(1, "Ing Civil");
+//        carrera.editarCarrera(1, "Ing Civil");
         System.out.println(carrera.listarCarrera());
         
         //Eliminar carreras
