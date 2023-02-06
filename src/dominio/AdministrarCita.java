@@ -15,7 +15,6 @@ public class AdministrarCita {
      */
     private static int numCitas;
 
-    
     /**
      * Bloque estático. Inicializa el array de citas con un tamaño de 3 y establece el número de citas en 0 al momento de crear la clase.
      */
@@ -30,7 +29,7 @@ public class AdministrarCita {
     public AdministrarCita() {
 //        this.citas = new Cita[3];
 //        this.numCitas = 0;
-        
+
     }
 
     /**
@@ -54,17 +53,15 @@ public class AdministrarCita {
 //        this.citas = o.citas;
 //        this.numCitas = o.numCitas;
     }
-    
+
     //Metodos CRUD de la clase 
-    
     /**
      * Método para crear un nuevo lugar de citas.
      *
-     * @param lugar el nombre del nuevo lugar.
+     * @param cita
      */
 //    public void crearCita(String lugar) {
-        public void crearCita(Cita cita) {
-
+    public void crearCita(Cita cita) {
 
         //Creacion de un array para si es el caso agregue más clientes
         if (numCitas == citas.length) {
@@ -83,19 +80,22 @@ public class AdministrarCita {
      * Método para editar un lugar existente.
      *
      * @param posicion
-     * @param lugar
+     * @param cita
      *
      */
-    public void editarCita(int posicion, String lugar) {
-        citas[posicion] = new Cita() {};
+//    public void editarCita(int posicion, String lugar) {
+            
+
+    public void editarCita(int posicion, Cita cita) {
+
+//        citas[posicion] = Cita(citas);
     }
 
     /**
      * Método para buscar un lugar específico.
      *
      * @param posicion
-     * @return el objeto AdminCita correspondiente al lugar buscado, o null si
-     * no se encuentra el lugar.
+     * @return el objeto AdminCita correspondiente al lugar buscado, o null si no se encuentra el lugar.
      */
     public Cita buscarCita(int posicion) {
         return citas[posicion];
@@ -121,9 +121,9 @@ public class AdministrarCita {
      * Método para eliminar un lugar existente.
      *
      * @param posicion
-     * @param lugar
+     * @param cita
      */
-    public void eliminarCita(int posicion, String lugar) {
+    public void eliminarCita(int posicion, Cita cita) {
         numCitas--;
         int a = 0;
         Cita[] eliAux = citas;
@@ -146,6 +146,5 @@ public class AdministrarCita {
 
         }
     }
-    
 
 }

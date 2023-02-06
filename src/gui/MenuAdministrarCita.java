@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class MenuAdministrarCita {
     Scanner sc = new Scanner(System.in);
 
-    Cita cita = new Cita() {};
+   // Cita cita = Cita();
 
     public void setOpc(int opcm) throws ParseException {
         int opcion;
