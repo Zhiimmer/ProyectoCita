@@ -2,7 +2,9 @@ package dominio;
 
 import java.util.Date;
 import java.util.Objects;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author Edu. N
@@ -65,7 +67,48 @@ public class CitaPresencial extends Cita  {
         this.horaInicio = presencial1.horaInicio;
         this.horaFinal = presencial1.horaFinal;
     }
+    
+     /**
+     *Uso de excepciones para control de errores
+     *
+     *se va crear un Try-Catch para mostrar mensaje el String en un formato de hora
+     */
+//public class horaInicio {
+//      public static void main(String[] args) {
+//      String horaInicio = "12:35";
+//      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+//      try {
+//         Date fechaHora = formatoHora.parse(horaInicio);
+//         System.out.println("Hora en formato de fecha: " + fechaHora);
+//      } catch (ParseException e) {
+//         System.out.println("Excepción al cambiar formato hora de empezar la cita : " + e.getMessage());
+//      }
+//   }
+//}
 
+/**
+     *Uso de excepciones para control de errores
+     *
+     *se va crear un Try-Catch para mostrar mensaje el String en un formato de horaFinal
+     */
+//public class horaFinal {
+//      public static void main(String[] args) {
+//      String horaFinal = "12:35";
+//      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+//      try {
+//         Date fechaHora = formatoHora.parse(horaFinal);
+//         System.out.println("Hora en formato de fecha: " + fechaHora);
+//      } catch (ParseException e) {
+//         System.out.println("Excepción al cambiar formato de la hora de acabar la cita: " + e.getMessage());
+//      }
+//   }
+//}
+
+
+
+
+
+        
     /**
      * Método que obtiene la hora de inicio de la cita
      *
