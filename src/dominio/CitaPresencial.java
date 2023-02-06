@@ -78,46 +78,38 @@ public class CitaPresencial extends Cita {
     }
     
      /**
+      * Método que establece la hora de inicio de la cita
+     *@param horaInicio hora de inicio de la cita
      *Uso de excepciones para control de errores
-     *
      *se va crear un Try-Catch para mostrar mensaje el String en un formato de hora
      */
-//public class horaInicio {
-//      public static void main(String[] args) {
-//      String horaInicio = "12:35";
-//      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
-//      try {
-//         Date fechaHora = formatoHora.parse(horaInicio);
-//         System.out.println("Hora en formato de fecha: " + fechaHora);
-//      } catch (ParseException e) {
-//         System.out.println("Excepción al cambiar formato hora de empezar la cita : " + e.getMessage());
-//      }
-//   }
-//}
+public void setHoraInicio(String horaInicio) {
+      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+      try {
+         Date fechaHora = formatoHora.parse(horaInicio);
+         System.out.println("Hora en formato de fecha: " + fechaHora);
+      } catch (ParseException e) {
+         System.out.println("Excepción al cambiar formato hora de empezar la cita : " + e.getMessage());
+      }
+   }
+
 
 /**
+     * Método que establece la hora final de la cita
+     * @param horaFinal hora final de la cita
      *Uso de excepciones para control de errores
-     *
      *se va crear un Try-Catch para mostrar mensaje el String en un formato de horaFinal
      */
-//public class horaFinal {
-//      public static void main(String[] args) {
-//      String horaFinal = "12:35";
-//      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
-//      try {
-//         Date fechaHora = formatoHora.parse(horaFinal);
-//         System.out.println("Hora en formato de fecha: " + fechaHora);
-//      } catch (ParseException e) {
-//         System.out.println("Excepción al cambiar formato de la hora de acabar la cita: " + e.getMessage());
-//      }
-//   }
-//}
-
-
-
-
-
-        
+public void setHoraFinal(String horaFinal) {
+      SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+      try {
+         Date fechaHora = formatoHora.parse(horaFinal);
+         System.out.println("Hora en formato de fecha: " + fechaHora);
+      } catch (ParseException e) {
+         System.out.println("Excepción al cambiar formato hora para acabar a cita : " + e.getMessage());
+      }
+   }
+       
     /**
      * Método que obtiene la hora de inicio de la cita
      *
@@ -125,15 +117,6 @@ public class CitaPresencial extends Cita {
      */
     public String getHoraInicio() {
         return horaInicio;
-    }
-
-    /**
-     * Método que establece la hora de inicio de la cita
-     *
-     * @param horaInicio hora de inicio de la cita
-     */
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
     }
 
     /**
@@ -145,14 +128,6 @@ public class CitaPresencial extends Cita {
         return horaFinal;
     }
 
-    /**
-     * Método que establece la hora final de la cita
-     *
-     * @param horaFinal hora final de la cita
-     */
-    public void setHoraFinal(String horaFinal) {
-        this.horaFinal = horaFinal;
-    }
 
     /**
      * Método para obtener el arreglo de lugares.
