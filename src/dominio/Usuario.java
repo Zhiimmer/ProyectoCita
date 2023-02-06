@@ -135,6 +135,20 @@ public class Usuario {
         this.signoZodiacal = signoZodiacal;
         this.fumadorSocial = fumadorSocial;
     }
+    public enum signoZodiacal {
+        ARIES,
+        TAURO,
+        GEMINIS,
+        CANCER,
+        LEO,
+        VIRGO,
+        LIBRA,
+        ESCORPION,
+        SAGITARIO,
+        CAPRICORNIO,
+        ACUARIO,
+        PISCIS,
+    }
 
     /**
      * Método constructor referenciado a un objeto con la "sobre carga de
