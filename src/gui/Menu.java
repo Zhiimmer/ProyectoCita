@@ -1,6 +1,7 @@
 package gui;
 
 import java.text.ParseException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,7 @@ public class Menu {
 
         Scanner leer = new Scanner(System.in);
 
-        int opcion;
+        int opcion = 0;
         System.out.println("-----------------------------");
         System.out.println("|Bienvenido a Cupido Cabezón|");
         System.out.println("-----------------------------");
@@ -33,7 +34,13 @@ public class Menu {
         System.out.println("6. Salir ");
         System.out.println("");
         System.out.println("Escoja una opción: ");
-        opcion = leer.nextInt();
+//        opcion = leer.nextInt();
+        try {
+            opcion = leer.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Por favor ingrese un número entero válido.");
+            leer.next(); // Limpie el buffer de entrada
+        }
         /**
          * Creacion de los case para cada accion dentro de nuestro programa
          */
@@ -99,8 +106,15 @@ public class Menu {
 
     }
 
-    public static void main(String[] args) throws ParseException {
-        Menu1();
+//    public static void main(String[] args) throws ParseException {
+//        Menu1();
+//    }
+    public static void main(String[] args) {
+        try {
+            Menu1();
+        } catch (ParseException e) {
+            System.out.println("Ocurrió un error al parsear los datos: " + e.getMessage());
+        }
     }
 
 }
