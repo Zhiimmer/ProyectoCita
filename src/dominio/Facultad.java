@@ -1,10 +1,16 @@
 package dominio;
-
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 /**
  *
  * @author Gaby Fernández
  */
-public class Facultad {
+public class Facultad implements IAdministrarCRUD, Serializable {
 
     private String nombreFacultad;
     private static Carrera carreras[];
@@ -12,7 +18,7 @@ public class Facultad {
     private final String INGENIERIA_QUIMICA = "1. INGENIERIA_QUIMICA";
     private final String INGENIERIA_Y_CIENCIAS_APLICADAS = "2. INGENIERIA_Y_CIENCIAS_APLICADAS";
     private final String INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL = "3. INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL";
-       
+
     /**
      * Bloque estático
      */
@@ -39,7 +45,7 @@ public class Facultad {
         INGENIERIA_Y_CIENCIAS_APLICADAS,
         INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL,
     }
-    
+
     /**
      * Método para mostrar la enumeración de las facultades
      */
@@ -57,7 +63,8 @@ public class Facultad {
     }
 
     /**
-     * Constructor con argumentos. Inicializa el array de citas y el número de citas con los valores pasados como parámetros.
+     * Constructor con argumentos. Inicializa el array de citas y el número de
+     * citas con los valores pasados como parámetros.
      *
      * @param carreras
      * @param numCarreras
@@ -68,7 +75,8 @@ public class Facultad {
     }
 
     /**
-     * Método constructor referenciado a un objeto con la "sobre carga de métodos"
+     * Método constructor referenciado a un objeto con la "sobre carga de
+     * métodos"
      *
      * @param facu1
      */
@@ -104,12 +112,26 @@ public class Facultad {
     public static void setNumCarreras(int numCarreras) {
         Facultad.numCarreras = numCarreras;
     }
+    
+    //Metodo toString
+    /**
+     * Este es un metódo que nos permite mostrar la información completa del
+     * objeto como una cadena de caracteres
+     *
+     * @return la información del objeto como una cadena de caracteres
+     */
+    @Override
+    public String toString() {
+        return "Facultad{" + "nombreFacultad=" + nombreFacultad + '}';
+    }
+    
 
     /**
      * Creación del método equals
      *
      * @param o
-     * @return para saber si dos objetos son del mismo tipo y tienen los mismos datos
+     * @return para saber si dos objetos son del mismo tipo y tienen los mismos
+     * datos
      */
     @Override
     public boolean equals(Object o) {
@@ -159,6 +181,19 @@ public class Facultad {
         }
         return resp;
     }
+    public String editar(Object obj, int posicion) {
+        String mensaje = "";
+        if (obj instanceof Carrera) {
+            try {
+                Carrera carrera = (Carrera) obj;
+                editarCarrera(posicion,carrera);
+                mensaje = "Datos actualizados";
+            } catch (ArrayIndexOutOfBoundsException ae) {
+                mensaje = "No se encuentra la posición " + posicion + " Error: " + ae.getMessage();
+            }
+        } 
+        return mensaje;
+    }
 
     /**
      * Método para editar una carrera existente.
@@ -167,16 +202,17 @@ public class Facultad {
      * @param carrera
      *
      */
-    public void editarCarrera(int posicion, String carrera) {
-        carreras[posicion] = new Carrera();
+    public void editarCarrera(int posicion, Carrera carrera) {
+        carreras[posicion] = carrera;
     }
 
-    /**
-     * Método para buscar un lugar específico.
-     *
-     * @param posicion
-     * @return el objeto Facultad correspondiente a la carrera buscada, o null si no se encuentra la carrera.
-     */
+        /**
+         * Método para buscar un lugar específico.
+         *
+         * @param posicion
+         * @return el objeto Facultad correspondiente a la carrera buscada, o
+         * null si no se encuentra la carrera.
+         */
     public Carrera buscarCarrera(int posicion) {
         return carreras[posicion];
     }
@@ -225,17 +261,6 @@ public class Facultad {
             System.out.println("No existe la posicion: " + posicion);
 
         }
-    }
-
-    //Metodo toString
-    /**
-     * Este es un metódo que nos permite mostrar la información completa del objeto como una cadena de caracteres
-     *
-     * @return la información del objeto como una cadena de caracteres
-     */
-    @Override
-    public String toString() {
-        return "Facultad{" + "nombreFacultad=" + nombreFacultad + '}';
     }
 
 }
