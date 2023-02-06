@@ -61,17 +61,28 @@ public abstract class Cita {
         return horaAcordada;
     }
 
+   
     public void setHoraAcordada(String horaAcordada) {
+    try {
         this.horaAcordada = horaAcordada;
+    } catch (Exception e) {
+        System.out.println("Error al establecer hora acordada: " + e.getMessage());
     }
+}
 
     public Date getFecha() {
         return fecha;
     }
 
     public void setFecha(Date fecha) {
+    try {
         this.fecha = fecha;
+    } catch (Exception e) {
+        System.out.println("Error al establecer fecha: " + e.getMessage());
+    } finally {
+        System.out.println("Bloque finally ejecutado");
     }
+}
 
     @Override
     public String toString() {
@@ -110,5 +121,5 @@ public abstract class Cita {
         hash = 97 * hash + Objects.hashCode(this.fecha);
         return hash;
     }
-
+//public abstract void setMotivo() throws Exception;
 }
