@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author Edu. N
  */
-public class CitaPresencial extends Cita  {
+public class CitaPresencial extends Cita {
 
     /**
      * Clase que representa una cita presencial
@@ -23,6 +23,15 @@ public class CitaPresencial extends Cita  {
     static {
         numLugares = 0;
         lugares = new Cita[3];
+    }
+
+    public enum Lugar {
+        CISCO,
+        CAFE_CISCO,
+        CANCHA_CIVL,
+        LABORATORIOS,
+        ASO
+
     }
 
     /**
@@ -148,5 +157,4 @@ public class CitaPresencial extends Cita  {
         return "\nhoraInicio = " + horaInicio + " \nhoraFinal = " + horaFinal;
     }
 
-    
 }
