@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class Usuario {
 
+   
+
     //ATRIBUTOS
     /**
      * Nombre del usuario

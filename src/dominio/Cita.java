@@ -4,6 +4,7 @@
  */
 package dominio;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -87,10 +88,18 @@ public abstract class Cita {
         System.out.println("Bloque finally ejecutado");
     }
 }
+    
+
+//    @Override
+//    public String toString() {
+//        return "Cita{" + "horaAcordada= " + horaAcordada + ", fecha= " + fecha + '}';
+//    }
 
     @Override
     public String toString() {
-        return "Cita{" + "horaAcordada= " + horaAcordada + ", fecha= " + fecha + '}';
+        return "Cita{" + "horaAcordada=" + horaAcordada + ", fecha=" + fecha + ", motivo=" + motivo + '}';
+        
+   
     }
     
     

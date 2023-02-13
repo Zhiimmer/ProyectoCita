@@ -34,7 +34,7 @@ public class MenuSugerencia {
         switch (opcion) {
 
             case 1 -> {
-                Usuario.crearSugerencia();
+//                Usuario.crearSugerencia();
                 System.out.println("Se creo con exito!");
                 setOpc(1);
             }

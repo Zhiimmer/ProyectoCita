@@ -1,12 +1,13 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Edu. N
  */
-public class Sugerencia {
+public class Sugerencia implements Serializable {
 
     /**
      * Descripción de la sugerencia
