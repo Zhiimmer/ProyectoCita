@@ -1,5 +1,6 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import java.text.ParseException;
@@ -9,7 +10,7 @@ import java.util.Date;
  *
  * @author Edu. N
  */
-public class CitaPresencial extends Cita {
+public class CitaPresencial extends Cita implements Serializable {
 
     /**
      * Clase que representa una cita presencial
