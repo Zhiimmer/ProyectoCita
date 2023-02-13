@@ -39,11 +39,6 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         this.nombreFacultad = nombreFacultad;
     }
 
-    @Override
-    public String borrar(Object obj, int posicion) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     /**
      * Enum para representar las diferentes facultades
      */
@@ -227,6 +222,43 @@ public class Facultad implements IAdministrarCRUD, Serializable {
     }
 
     /**
+     *
+     * @param obj
+     * @param posicion
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public String borrar(Object obj, int posicion) throws Exception {
+        String mensaje = "";
+        if (obj instanceof Carrera) {
+            int total = carreras.length - 1;
+            try {
+                if (posicion > total) {
+                    throw new Exception("No existe la carrera en la posición " + posicion);
+                } else {
+                    int despues = posicion - 1;
+
+                    Carrera[] caAux = carreras;
+                    carreras = new Carrera[numCarreras];
+                    Carrera[] carrerasantes = new Carrera[despues];
+                    Carrera[] carrerasdespues = new Carrera[numCarreras - posicion];
+                    System.arraycopy(caAux, 0, carrerasantes, 0, despues);
+                    System.arraycopy(caAux, posicion, carrerasdespues, 0, numCarreras - posicion);
+
+                    System.arraycopy(carrerasantes, 0, carreras, 0, carrerasantes.length);
+                    System.arraycopy(carrerasdespues, 0, carreras, carrerasantes.length, carrerasdespues.length);
+
+                    mensaje = "Datos eliminados correctamente";
+                }
+            } catch (ArrayIndexOutOfBoundsException ce) {
+                mensaje = "No existe la carrera en la posición " + posicion;
+            }
+        }
+        return mensaje;
+    }
+
+    /**
      * Método para listar todos las carreras creados.
      *
      * @return
@@ -245,35 +277,4 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         }
         return mensaje;
     }
-
-    /**
-     * Método para eliminar una carrera existente.
-     *
-     * @param posicion
-     * @param carrera
-     */
-    public void eliminarCarrera(int posicion, String carrera) {
-        numCarreras--;
-        int a = 0;
-        Carrera[] eliAux = carreras;
-        carreras = new Carrera[numCarreras];
-        if (posicion < eliAux.length - 1) {
-            if (posicion == eliAux.length - 1) {
-                System.arraycopy(eliAux, 0, carreras, 0, numCarreras);
-
-            } else {
-                for (int i = 0; i < eliAux.length; i++) {
-                    if (i != posicion) {
-                        carreras[a] = eliAux[i];
-                        a++;
-
-                    }
-                }
-            }
-        } else {
-            System.out.println("No existe la posicion: " + posicion);
-
-        }
-    }
-
 }

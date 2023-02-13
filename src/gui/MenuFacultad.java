@@ -53,15 +53,15 @@ public class MenuFacultad {
 //            }
             case 3 -> {
 
-                carrera.listar();
-                System.out.println(carrera.listar());
-                setOpc(1);
+                //carrera.listar();
+                //System.out.println(carrera.listar());
+                //setOpc(1);
             }
             case 4 -> {
 
-                carrera.borrar(0, "Ing.Sistemas");
-                System.out.println("Se elimino la carrera con exito!");
-                setOpc(1);
+             //  carrera.borrar(0, "Ing.Sistemas");
+               // System.out.println("Se elimino la carrera con exito!");
+                //setOpc(1);
 
             }
             case 5 -> {
