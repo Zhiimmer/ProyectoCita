@@ -1,4 +1,5 @@
 package dominio;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
 /**
  *
  * @author Gaby Fernández
@@ -37,6 +39,11 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         this.nombreFacultad = nombreFacultad;
     }
 
+    @Override
+    public String borrar(Object obj, int posicion) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     /**
      * Enum para representar las diferentes facultades
      */
@@ -112,7 +119,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
     public static void setNumCarreras(int numCarreras) {
         Facultad.numCarreras = numCarreras;
     }
-    
+
     //Metodo toString
     /**
      * Este es un metódo que nos permite mostrar la información completa del
@@ -124,7 +131,6 @@ public class Facultad implements IAdministrarCRUD, Serializable {
     public String toString() {
         return "Facultad{" + "nombreFacultad=" + nombreFacultad + '}';
     }
-    
 
     /**
      * Creación del método equals
@@ -134,7 +140,8 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      * datos
      */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o
+    ) {
         boolean resp = false;
         Carrera f = null;
         if (o != null && f instanceof Carrera) {
@@ -170,28 +177,30 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      * @param c
      * @return
      */
-    public boolean validarCarrera(Carrera c)throws DuplicadoException {
+    public boolean validarCarrera(Carrera c) throws DuplicadoException {
         boolean resp = false;
         for (Carrera carrera : carreras) {
             if (carrera != null) {
                 if (carrera.equals(c)) {
                     resp = true;
-                }throw new DuplicadoException ("elemento duplicado", carrera);
+                }
+                throw new DuplicadoException("elemento duplicado", carrera);
             }
         }
         return resp;
     }
+
     public String editar(Object obj, int posicion) {
         String mensaje = "";
         if (obj instanceof Carrera) {
             try {
                 Carrera carrera = (Carrera) obj;
-                editarCarrera(posicion,carrera);
+                editarCarrera(posicion, carrera);
                 mensaje = "Datos actualizados";
             } catch (ArrayIndexOutOfBoundsException ae) {
                 mensaje = "No se encuentra la posición " + posicion + " Error: " + ae.getMessage();
             }
-        } 
+        }
         return mensaje;
     }
 
@@ -206,13 +215,13 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         carreras[posicion] = carrera;
     }
 
-        /**
-         * Método para buscar un lugar específico.
-         *
-         * @param posicion
-         * @return el objeto Facultad correspondiente a la carrera buscada, o
-         * null si no se encuentra la carrera.
-         */
+    /**
+     * Método para buscar un lugar específico.
+     *
+     * @param posicion
+     * @return el objeto Facultad correspondiente a la carrera buscada, o null
+     * si no se encuentra la carrera.
+     */
     public Carrera buscarCarrera(int posicion) {
         return carreras[posicion];
     }
@@ -222,15 +231,19 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      *
      * @return
      */
-    public String listarCarrera() {
-        String lista = "";
-        for (Carrera carrera : carreras) {
-            if (carrera != null) {
-                lista += carrera + "\r\n";
+    @Override
+    public String listar(Object obj) {
+        String mensaje = "";
+        if (obj instanceof Carrera) {
+            int con = 0;
+            for (Carrera car1 : carreras) {
+                if (car1 != null) {
+                    mensaje += "[" + con + "].-" + car1.toString() + "\r\n";
+                    con++;
+                }
             }
         }
-        return lista;
-
+        return mensaje;
     }
 
     /**

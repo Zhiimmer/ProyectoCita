@@ -4,7 +4,7 @@ package dominio;
  *
  * @author Gaby Fernandez
  */
-public class Carrera {
+public class Carrera{
 
     //Atributos
     String nombreCarrera;
@@ -36,6 +36,8 @@ public class Carrera {
         this.nombreCarrera = nombreCarrera;
         this.semestre = semestre;
     }
+
+  
     
     /**
      * Metodo de enumerar
