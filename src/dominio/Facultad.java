@@ -148,6 +148,16 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         return false;
     }
 
+    public String nuevo(Object obj) {
+        String mensaje = "No se creo la carrera";
+        if (obj instanceof Carrera) {
+            Carrera car = (Carrera) obj;
+            this.nuevaCarrera(car);
+            mensaje  = "La carrera se creo con exito";
+        }
+        return mensaje;
+    }
+
     /**
      * Metodo crear carrera de la clase facultad
      *
@@ -166,6 +176,15 @@ public class Facultad implements IAdministrarCRUD, Serializable {
 
     }
 
+    public void nuevaCarrera(Carrera car) {
+          if (numCarreras == carreras.length) {
+            Carrera[] aux = new Carrera[carreras.length + 1];
+            System.arraycopy(carreras, 0, aux, 0, carreras.length);
+            carreras = aux;
+        }
+        int i = numCarreras++;
+        carreras[i] = new Carrera();
+    }
     /**
      * Metodo para validar carrera de la clase facultad
      *
@@ -277,16 +296,15 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         }
         return mensaje;
     }
-    
-    
-    private void writeObject(ObjectOutputStream out) throws IOException {
-    out.defaultWriteObject();
-    out.writeObject(nombreFacultad);
-}
 
-private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-    in.defaultReadObject();
-    nombreFacultad = (String) in.readObject();
-}
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeObject(nombreFacultad);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        nombreFacultad = (String) in.readObject();
+    }
 
 }

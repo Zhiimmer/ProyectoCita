@@ -11,6 +11,15 @@ package dominio;
 interface IAdministrarCRUD {
 
     /**
+     * Método que permite crear un nuevo Objeto de cualquier clase.
+     *
+     * @param obj Es el nuevo Objeto que se va a crear
+     *
+     * @return Un mensaje para alertar al usuario
+     */
+    public String nuevo(Object obj);
+
+    /**
      * Método que permite modificar el estado de un Objeto
      *
      * @param obj
@@ -36,5 +45,5 @@ interface IAdministrarCRUD {
      * @return La lista de Objetos almacenados
      */
     public String listar(Object obj);
-    
+
 }
