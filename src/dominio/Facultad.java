@@ -153,7 +153,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         if (obj instanceof Carrera) {
             Carrera car = (Carrera) obj;
             this.nuevaCarrera(car);
-            mensaje  = "La carrera se creo con exito";
+            mensaje = "La carrera se creo con exito";
         }
         return mensaje;
     }
@@ -177,7 +177,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
     }
 
     public void nuevaCarrera(Carrera car) {
-          if (numCarreras == carreras.length) {
+        if (numCarreras == carreras.length) {
             Carrera[] aux = new Carrera[carreras.length + 1];
             System.arraycopy(carreras, 0, aux, 0, carreras.length);
             carreras = aux;
@@ -185,6 +185,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         int i = numCarreras++;
         carreras[i] = new Carrera();
     }
+
     /**
      * Metodo para validar carrera de la clase facultad
      *
@@ -227,6 +228,25 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      */
     public void editarCarrera(int posicion, Carrera carrera) {
         carreras[posicion] = carrera;
+    }
+
+    /**
+     *
+     * @param obj
+     * @param id
+     * @return
+     */
+    public Object buscarPorId(Object obj, Integer id) {
+        Object ob = null;
+        if (obj instanceof Carrera) {
+            Carrera car = (Carrera) obj;
+            for (int i = 0; i < carreras.length; i++) {
+                if (i == id) {
+                    ob = carreras[i];
+                }
+            }
+        }
+        return ob;
     }
 
     /**

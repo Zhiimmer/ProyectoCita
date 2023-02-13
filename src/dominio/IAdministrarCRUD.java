@@ -39,6 +39,15 @@ interface IAdministrarCRUD {
     public String borrar(Object obj, int posicion) throws Exception;
 
     /**
+     * Metodo que permite buscar un Objeto
+     *
+     * @param id El id del Objeto que se esta buscando
+     *
+     * @return El Objeto encontrado, si el objeto no existe, retorna null
+     */
+    public Object buscarPorId(Object obj, Integer id);
+
+    /**
      * Metodo que permita listar un Conjunto de Objetos
      *
      * @param obj
