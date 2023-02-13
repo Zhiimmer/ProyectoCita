@@ -1,10 +1,12 @@
 package dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Edu. N
  */
-public class Compatibilidad {
+public class Compatibilidad implements Serializable{
 
     /**
      * Atributos de la clase Compatibilidad
