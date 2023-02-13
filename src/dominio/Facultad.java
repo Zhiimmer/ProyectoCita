@@ -205,6 +205,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         return resp;
     }
 
+    @Override
     public String editar(Object obj, int posicion) {
         String mensaje = "";
         if (obj instanceof Carrera) {
@@ -236,6 +237,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      * @param id
      * @return
      */
+    @Override
     public Object buscarPorId(Object obj, Integer id) {
         Object ob = null;
         if (obj instanceof Carrera) {

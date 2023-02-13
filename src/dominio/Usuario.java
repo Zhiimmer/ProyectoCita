@@ -1,5 +1,6 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
  *
  * @author Ronny Alexis Paspuel Anchundia
  */
-public class Usuario {
+public class Usuario implements Serializable{
 
    
 
