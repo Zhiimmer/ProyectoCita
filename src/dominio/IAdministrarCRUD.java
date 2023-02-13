@@ -36,4 +36,5 @@ interface IAdministrarCRUD {
      * @return La lista de Objetos almacenados
      */
     public String listar(Object obj);
+    
 }

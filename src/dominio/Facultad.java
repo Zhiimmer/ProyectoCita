@@ -277,4 +277,16 @@ public class Facultad implements IAdministrarCRUD, Serializable {
         }
         return mensaje;
     }
+    
+    
+    private void writeObject(ObjectOutputStream out) throws IOException {
+    out.defaultWriteObject();
+    out.writeObject(nombreFacultad);
+}
+
+private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+    in.defaultReadObject();
+    nombreFacultad = (String) in.readObject();
+}
+
 }

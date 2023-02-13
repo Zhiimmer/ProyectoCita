@@ -25,7 +25,7 @@ public class SerializarFacultad {
 
             ObjectOutputStream o = new ObjectOutputStream(f);
 
-            o.writeObject(f);
+            o.writeObject(fa);
             o.close();
 
         } catch (FileNotFoundException ex) {
