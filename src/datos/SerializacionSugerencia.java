@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Date;
 
 /**
  *
@@ -21,7 +22,13 @@ public class SerializacionSugerencia {
     public static Sugerencia[] sugerenciaRecuperado = new Sugerencia[3];
 
     public static void main(String[] args) {
-        serializarSugerencia(sugerenciaRecuperado);
+        
+        Sugerencia[] sugerencia1 = new Sugerencia[3];
+        sugerencia1[0] = new Sugerencia("Muy buena aplicación espero con ancias mi próxima cita", new Date(2023, 1, 11));
+        sugerencia1[1] = new Sugerencia("La cita virtual fue de maravilla, espero poder quedar algun día", new Date(2023, 2, 20));
+        sugerencia1[2] = new Sugerencia("Me gusto poder elegir el tipo de cita, ya que me puedo organizar de mejor manera", new Date(2023, 1, 14));
+        
+        serializarSugerencia(sugerencia1);
         deserializarSugerencia();
     }
 

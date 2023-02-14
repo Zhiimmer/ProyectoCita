@@ -79,7 +79,7 @@ public class Sugerencia implements Serializable {
 
     @Override
     public String toString() {
-        return "Sugerencia{" + "descripcion=" + descripcion + ", fechaSugerencia=" + fechaSugerencia + '}';
+        return "\n\nSugerencia \nDescripcion: " + descripcion + ", \nFecha de la Sugerencia: " + fechaSugerencia;
     }
 
 }
