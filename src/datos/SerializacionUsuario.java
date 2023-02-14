@@ -47,7 +47,7 @@ public class SerializacionUsuario {
     public static Usuario[] deserializarUsuario() {
         Usuario[] usuarioRecuperado = new Usuario[2];
         try {
-            ObjectInputStream o = new ObjectInputStream(new FileInputStream("Sugerencia.txt"));
+            ObjectInputStream o = new ObjectInputStream(new FileInputStream("usuario.txt"));
             usuarioRecuperado = (Usuario[]) o.readObject();
             o.close();
             for (Usuario user1 : usuarioRecuperado) {
