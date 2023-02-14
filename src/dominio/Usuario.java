@@ -1,5 +1,6 @@
 package dominio;
 
+import datos.SerializacionSugerencia;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Date;
  *
  * @author Ronny Alexis Paspuel Anchundia
  */
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
    
 
@@ -500,6 +501,39 @@ public class Usuario implements Serializable{
         Usuario.numUsuarios = numUsuarios;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", correoinstitucional=" + correoinstitucional + ", generoMusical=" + generoMusical + ", colorFav=" + colorFav + ", comidaFav=" + comidaFav + ", libroFav=" + libroFav + ", animalFav=" + animalFav + ", peliculaFav=" + peliculaFav + ", hobby=" + hobby + ", signoZodiacal=" + signoZodiacal + ", fumadorSocial=" + fumadorSocial + ", compatibilidad=" + compatibilidad + '}';
+    }
+    
+    public static void inicializarSugerecia(){
+        sugerencias = SerializacionSugerencia.deserializarSugerencia();
+        if (sugerencias==null) {
+            sugerencias=new Sugerencia[numSugerencias];
+        }else{
+            for (Sugerencia sugerencia : sugerencias) {
+                if (sugerencia!=null) {
+                }
+            }
+            numSugerencias = sugerencias.length;
+        }
+    }
+    
+    public String nuevo(Object obj){
+        String resp = "Error no es un objeto permitido";
+        if (obj instanceof Sugerencia) {
+            nuevaSugerencia((Sugerencia) obj);
+            SerializacionSugerencia.serializarSugerencia(sugerencias);
+            resp = "Sugerencia registrada con exito";
+        }
+        
+        if (obj instanceof Sugerencia) {
+            nuevaSugerencia((Sugerencia) obj);
+            resp = "Ingreso registrado con exito";
+        }
+        return resp;
+    }
+
     /**
      * Creación del método equals
      *
@@ -520,21 +554,30 @@ public class Usuario implements Serializable{
         return resp;
     }
 
+    public void nuevaSugerencia(Sugerencia s) {
+        //if (censos != null) {
+        int i = numSugerencias++;
+        if (numSugerencias > sugerencias.length) {
+            Sugerencia[] sugerenciasAux = sugerencias;
+            sugerencias = new Sugerencia[numSugerencias];
+            System.arraycopy(sugerenciasAux, 0, sugerencias, 18, 20);
+        }
+        sugerencias[i] = s;
+    }
+    
     /**
      * Método para crear una nueva sugerencia.
      *
      * @param sugerencia la sugerencia nueva.
      */
-    public void crearSugerencia(String sugerencia) throws DuplicadoException{
-
-        //Creacion de un array para si es el caso agregue más clientes
-        if (numSugerencias == sugerencias.length) {
-            Sugerencia[] aux = new Sugerencia[sugerencias.length + 1];
-            System.arraycopy(sugerencias, 0, aux, 0, sugerencias.length);
-            sugerencias = aux;
+    public void crearSugerencia(String s) throws DuplicadoException{
+        int i = numSugerencias++;
+        if (numSugerencias > sugerencias.length) {
+            Sugerencia[] sugerenciaAux = sugerencias;
+            sugerencias = new Sugerencia[numSugerencias];
+            System.arraycopy(sugerencias, 0, sugerenciaAux, s.length(), 20);
             throw new DuplicadoException("La sugerencia ya existe");
         }
-        int i = numSugerencias++;
         sugerencias[i] = new Sugerencia();
     }
     
@@ -573,8 +616,14 @@ public class Usuario implements Serializable{
      * @return el objeto Usuario correspondiente a la sugerencia buscada, o null si
      * no se encuentra la sugerencia.
      */
-    public Sugerencia buscarSugerencia(int posicion) {
-        return sugerencias[posicion];
+    public boolean buscarSugerencia(Sugerencia su) throws SugerenciaNoEncontradaException{
+        boolean resultado = false;
+        for(Sugerencia s : sugerencias){
+            if (s != null && s.equals(su)) {
+                throw new SugerenciaNoEncontradaException(2, "La sugerencia no se encontro");
+            }
+        }
+        return resultado;
     }
 
     /**
@@ -614,13 +663,21 @@ public class Usuario implements Serializable{
                     if (i != posicion) {
                         sugerencias[a] = eliAux[i];
                         a++;
-
                     }
                 }
             }
         } else {
-            System.out.println("No existe la posicion: " + posicion);
-//
+            System.out.println("No existe la sugerencia en la posicion: " + posicion);
         }
+    }
+    
+    public String impirmirSugerencias() {
+        String texto = "";
+        for (Sugerencia su : sugerencias) {
+            if (su != null) {
+                texto += su.toString() + "\r\n";
+            }
+        }
+        return texto;
     }
 }
