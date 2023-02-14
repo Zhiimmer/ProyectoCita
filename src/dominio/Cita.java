@@ -134,5 +134,4 @@ public abstract class Cita {
         hash = 97 * hash + Objects.hashCode(this.fecha);
         return hash;
     }
-//public abstract void setMotivo() throws Exception;
 }
