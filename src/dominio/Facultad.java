@@ -124,7 +124,7 @@ public class Facultad implements IAdministrarCRUD, Serializable {
      */
     @Override
     public String toString() {
-        return "Facultad{" + "nombreFacultad=" + nombreFacultad + '}';
+        return "\n\nFacultad \nNombre de la Facultad: " + nombreFacultad;
     }
 
     /**

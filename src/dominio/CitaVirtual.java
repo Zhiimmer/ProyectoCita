@@ -97,5 +97,6 @@ public class CitaVirtual extends Cita {
     public String toString() {
         return super.toString() + this.horaAcordada + this.plataforma;
     }
+    
 
 }

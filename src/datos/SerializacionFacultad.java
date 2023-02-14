@@ -19,7 +19,14 @@ public class SerializacionFacultad {
     public static Facultad[] facultadRecuperado = new Facultad[3];
 
     public static void main(String[] args) {
-        serializarFacultad(facultadRecuperado);
+        
+        Facultad[] facu1 = new Facultad[3];
+        facu1[0] = new Facultad("INGENIERIA_QUIMICA");
+        facu1[1] = new Facultad("INGENIERIA_Y_CIENCIAS_APLICADAS");
+        facu1[2] = new Facultad("INGENIERIA_EN_GEOLOGIA_MINAS_PETRÓLEOS_Y_AMBIENTAL");
+        
+        
+        serializarFacultad(facu1);
         deserializarFacultad();
     }
 
@@ -31,7 +38,7 @@ public class SerializacionFacultad {
      */
     public static void serializarFacultad(Facultad facultades[]) {
         try {
-            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("sugerencia.txt"));
+            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("facultad.txt"));
             o.writeObject(facultades);
             o.close();
         } catch (IOException e) {
@@ -44,10 +51,10 @@ public class SerializacionFacultad {
      * @return 
      */
     public static Facultad[] deserializarFacultad() {
-        Facultad[] sugerenciaRecuperado = new Facultad[3];
+        Facultad[] facultadRecuperado = new Facultad[3];
         try {
-            ObjectInputStream o = new ObjectInputStream(new FileInputStream("Sugerencia.txt"));
-            sugerenciaRecuperado = (Facultad[]) o.readObject();
+            ObjectInputStream o = new ObjectInputStream(new FileInputStream("facultad.txt"));
+            facultadRecuperado = (Facultad[]) o.readObject();
             o.close();
             for (Facultad facu1 : facultadRecuperado) {
                 System.out.println(facu1);

@@ -16,17 +16,22 @@ import java.io.ObjectOutputStream;
  * @author ronny
  */
 public class SerializacionUsuario {
-    
-    public static Usuario[] usuarioRecuperado = new Usuario[2];
 
+     public static Usuario[] usuarioRecuperado = new Usuario[2];
+    
     public static void main(String[] args) {
-        serializarUsuario(usuarioRecuperado);
+        
+        Usuario[] usuarios = new Usuario[2];
+        usuarios[0] = new Usuario("Juan", "Pérez", 25, "juanperez@email.com", "Rock", "Rojo", "Pizza", "Tom y Jerry", "Perro", "La Guerra de las Galaxias", "Fútbol", "Leo", true);
+        usuarios[1] = new Usuario("María", "García", 30, "mariagarcia@email.com", "Pop", "Azul", "Sushi", "El Chavo del 8", "Gato", "El Señor de los Anillos", "Tenis", "Acuario", false);
+        
+        serializarUsuario(usuarios);
         deserializarUsuario();
     }
 
+
     /**
-     * Método estático Serializar usuario 
-     * serealizar los datos de los usuarios
+     * Método estático Serializar usuario serealizar los datos de los usuarios
      *
      * @param sugerencias
      */
@@ -40,9 +45,10 @@ public class SerializacionUsuario {
     }
 
     /**
-     * Método estático deserializar usuarios
-     * Deserealizar los datos de las usuarios
-     * @return 
+     * Método estático deserializar usuarios Deserealizar los datos de las
+     * usuarios
+     *
+     * @return
      */
     public static Usuario[] deserializarUsuario() {
         Usuario[] usuarioRecuperado = new Usuario[2];
@@ -59,5 +65,5 @@ public class SerializacionUsuario {
             return usuarioRecuperado;
         }
     }
-    
+
 }

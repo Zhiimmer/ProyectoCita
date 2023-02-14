@@ -19,18 +19,18 @@ public class SerializacionCitaPresencial {
     
     public static void main(String[] args ){
             
-            CitaPresencial[] citas = new CitaPresencial[3];
-            citas[0] = new CitaPresencial("Mateo", new Date(2022, 5, 13), "16:30", "18:30");
-            citas[1] = new CitaPresencial("Luis", new Date(2022, 5, 13), "13:00", "14:00");
-            citas[2] = new CitaPresencial("Jorge", new Date(2022, 5, 13), "14:15", "16:00");
+            CitaPresencial[] citaP = new CitaPresencial[3];
+            citaP[0] = new CitaPresencial("Mateo", new Date(2022, 5, 13), "11:30 AM", "12:30 PM");
+            citaP[1] = new CitaPresencial("Luis", new Date(2022, 5, 13), "13:00 PM", "14:00 PM");
+            citaP[2] = new CitaPresencial("Jorge", new Date(2022, 5, 13), "14:15 PM", "16:00 PM");
         try {
-            ObjectOutputStream escribir = new ObjectOutputStream(new FileOutputStream("citaPresencial.txt"));
-            escribir.writeObject(citas);
-            escribir.close();
+            ObjectOutputStream e = new ObjectOutputStream(new FileOutputStream("citaPresencial.txt"));
+            e.writeObject(citaP);
+            e.close();
             
-            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("citaPresencial.txt"));
-            CitaPresencial [] ingresoRecuperado = (CitaPresencial[]) recuperar.readObject();
-            recuperar.close();
+            ObjectInputStream r = new ObjectInputStream(new FileInputStream("citaPresencial.txt"));
+            CitaPresencial [] ingresoRecuperado = (CitaPresencial[]) r.readObject();
+            r.close();
             for (CitaPresencial citap: ingresoRecuperado) {
                 System.out.println(citap);
             }
@@ -38,5 +38,4 @@ public class SerializacionCitaPresencial {
             
         }
         }
-    
 }

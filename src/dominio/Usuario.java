@@ -503,7 +503,10 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", correoinstitucional=" + correoinstitucional + ", generoMusical=" + generoMusical + ", colorFav=" + colorFav + ", comidaFav=" + comidaFav + ", libroFav=" + libroFav + ", animalFav=" + animalFav + ", peliculaFav=" + peliculaFav + ", hobby=" + hobby + ", signoZodiacal=" + signoZodiacal + ", fumadorSocial=" + fumadorSocial + ", compatibilidad=" + compatibilidad + '}';
+        return "\n\nUsuario \n Nombre: " + nombre + "\n Apellido: " + apellido + "\n edad: " + edad + "\n correoinstitucional: " + 
+                correoinstitucional + "\n generoMusical: " + generoMusical + "\n colorFav: " + colorFav + "\n comidaFav: " + comidaFav + 
+                "\n libroFav: " + libroFav + "\n animalFav: " + animalFav + "\n peliculaFav: " + peliculaFav + "\n hobby: " + hobby + 
+                "\n signoZodiacal: " + signoZodiacal + "\n fumadorSocial: " + fumadorSocial + "\n compatibilidad: " + compatibilidad;
     }
     
     public static void inicializarSugerecia(){

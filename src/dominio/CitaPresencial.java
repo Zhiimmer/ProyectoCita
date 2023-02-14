@@ -173,7 +173,7 @@ public void setHoraFinal(String horaFinal) {
      */
     @Override
     public String toString() {
-        return "\nhoraInicio = " + horaInicio + " \nhoraFinal = " + horaFinal;
+        return "\n\n Cita Presencial \nLugar: "+ lugares + "\nMotivo: "+ motivo + "\nhoraInicio = " + horaInicio + " \nhoraFinal = " + horaFinal;
     }
 
 }
