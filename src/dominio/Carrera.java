@@ -19,6 +19,7 @@ public class Carrera{
     private final String COMPUTACION = "8. COMPUTACION";
     private final String GEOLOGIA = "9. GEOLOGIA";
 
+
     /**
      * Método constructor sin argumentos con la "sobre carga de métodos"
      */
@@ -109,7 +110,7 @@ public class Carrera{
      */
     @Override
     public String toString() {
-        return "Carrera{" + "nombreCarrera=" + nombreCarrera + ", semestre=" + semestre + '}';
+        return "\n\nCarrera \nNombre de la Carrera: " + nombreCarrera + ", \nSemestre: " + semestre + '}';
     }
 
 }

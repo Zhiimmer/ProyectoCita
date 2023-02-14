@@ -1,5 +1,6 @@
 package dominio;
 
+import datos.SerializacionFacultad;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
