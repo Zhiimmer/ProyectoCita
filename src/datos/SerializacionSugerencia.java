@@ -26,8 +26,8 @@ public class SerializacionSugerencia {
     }
 
     /**
-     * Método estático Sedializar sugerencia serealizar los datos de las
-     * sugerencias
+     * Método estático Serializar sugerencia 
+     * serealizar los datos de las sugerencias
      *
      * @param sugerencias
      */
