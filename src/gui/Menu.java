@@ -51,8 +51,8 @@ public class Menu {
                 System.out.println("|         Gestionar Usuario         |");
                 System.out.println("-------------------------------------");
                 System.out.println("");
-//                MenuUsuario subMenuUsuarios = new MenuUsuario();
-//                subMenuUsuarios.setOpc(opcion);
+                MenuUsuario subMenuUsuarios = new MenuUsuario();
+                subMenuUsuarios.setOpc(opcion);
             }
             case 2 -> {
                 System.out.println("");

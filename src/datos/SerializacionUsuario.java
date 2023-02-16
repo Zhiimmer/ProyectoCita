@@ -41,6 +41,7 @@ public class SerializacionUsuario {
             o.writeObject(usuarios);
             o.close();
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -60,6 +61,8 @@ public class SerializacionUsuario {
                 System.out.println(user1);
             }
         } catch (IOException | ClassNotFoundException e) {
+                        e.printStackTrace();
+
 
         } finally {
             return usuarioRecuperado;

@@ -79,14 +79,6 @@ public class Usuario implements Serializable {
      * Número de sugerencias
      */
     private static int numSugerencias;
-    /**
-     * Arreglo de los usuarios creados
-     */
-    private static Usuario Usuarios[];
-    /**
-     * Número de los usuarios
-     */
-    private static int numUsuarios;
     
     /**
      * Bloque estático
@@ -94,8 +86,6 @@ public class Usuario implements Serializable {
     static {
         sugerencias = new Sugerencia[3];
         numSugerencias = 0;
-        Usuarios = new Usuario[2];
-        numUsuarios = 0;
     }
 
     /**
@@ -140,20 +130,7 @@ public class Usuario implements Serializable {
         this.signoZodiacal = signoZodiacal;
         this.fumadorSocial = fumadorSocial;
     }
-    public enum signoZodiacal {
-        ARIES,
-        TAURO,
-        GEMINIS,
-        CANCER,
-        LEO,
-        VIRGO,
-        LIBRA,
-        ESCORPION,
-        SAGITARIO,
-        CAPRICORNIO,
-        ACUARIO,
-        PISCIS,
-    }
+    
 
     /**
      * Método constructor referenciado a un objeto con la "sobre carga de
@@ -465,41 +442,7 @@ public class Usuario implements Serializable {
         Usuario.numSugerencias = numSugerencias;
     }
 
-    /**
-     * Lee el arreglo de los usuarios
-     *
-     * @return usuarios
-     */
-    public static Usuario[] getUsuarios() {
-        return Usuarios;
-    }
-
-    /**
-     * Modifica el arreglo de los usuarios
-     *
-     * @param Usuarios
-     */
-    public static void setUsuarios(Usuario[] Usuarios) {
-        Usuario.Usuarios = Usuarios;
-    }
-
-    /**
-     * Lee el arreglo número de los usuarios
-     *
-     * @return número de los usuarios
-     */
-    public static int getNumUsuarios() {
-        return numUsuarios;
-    }
-
-    /**
-     * Modifica el arreglo del número de los usuarios
-     *
-     * @param numUsuarios número de losusuarios
-     */
-    public static void setNumUsuarios(int numUsuarios) {
-        Usuario.numUsuarios = numUsuarios;
-    }
+    
 
     @Override
     public String toString() {

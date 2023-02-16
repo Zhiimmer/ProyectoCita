@@ -5,6 +5,7 @@
 package gui;
 
 import dominio.Carrera;
+import dominio.Facultad;
 import java.text.ParseException;
 import java.util.Scanner;
 import dominio.Usuario;
@@ -16,16 +17,16 @@ import dominio.Usuario;
 public class MenuUsuario {
     Scanner sc = new Scanner(System.in);
 
-    Usuario sugerencia = new Usuario();
+    Usuario u = new Usuario();
 
     public void setOpc(int opcm) throws ParseException {
         int opcion;
         System.out.println("---------------------------------------");
-        System.out.println("         Submenú de Sugerencias        ");
+        System.out.println("         Submenú de Usuarios           ");
         System.out.println("---------------------------------------");
         System.out.println("");
         System.out.println("Menú de opciones:");
-        System.out.println("1. Crear Sugerencia ");
+        System.out.println("1. Crear Usuario ");
         System.out.println("2. Modificar Sugerencia");
         System.out.println("3. Consultar Sugerencia");
         System.out.println("4. Eliminar Sugerencia");
@@ -33,15 +34,18 @@ public class MenuUsuario {
         System.out.println("");
         System.out.println("Escoja una opción: ");
         opcion = sc.nextInt();
+        Facultad.carga();
         switch (opcion) {
 
             case 1 -> {
                 //Usuario.crearSugerencia();
+                Facultad.nuevoUsuario(u);
                 System.out.println("Se creo con exito!");
                 setOpc(1);
             }
             case 2 -> {
                 //Usuario.modificarSugerencia(1, "");
+                System.out.println(Facultad.listar());
                 System.out.println("Se modifico con exito!");
                 setOpc(1);
             }
