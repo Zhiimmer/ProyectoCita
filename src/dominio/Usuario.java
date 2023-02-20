@@ -1,5 +1,4 @@
 package dominio;
-
 import datos.SerializacionSugerencia;
 import java.io.Serializable;
 import java.util.Calendar;

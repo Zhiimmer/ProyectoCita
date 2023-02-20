@@ -4,6 +4,9 @@
  */
 package dominio;
 
+import util.*;
+import dominio.*;
+
 /**
  *
  * @author ronny
