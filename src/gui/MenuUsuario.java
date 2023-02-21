@@ -45,7 +45,7 @@ public class MenuUsuario {
             }
             case 2 -> {
                 //Usuario.modificarSugerencia(1, "");
-                System.out.println(Facultad.listar());
+                //System.out.println(Facultad.listar());
                 System.out.println("Se modifico con exito!");
                 setOpc(1);
             }
