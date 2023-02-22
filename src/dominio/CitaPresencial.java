@@ -25,7 +25,7 @@ public class CitaPresencial extends Cita implements Serializable {
      */
     static {
         numLugares = 0;
-        lugares = new Cita[3];
+        lugares = new Cita[4];
     }
 
     public enum Lugar {
