@@ -1,5 +1,8 @@
 package dominio;
 import datos.SerializacionSugerencia;
+import datos.SerializacionUsuario;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -74,6 +77,7 @@ public class Usuario implements Serializable {
      * Arreglo de las sugerencias creadas
      */
     private static Sugerencia sugerencias[];
+    
     /**
      * Número de sugerencias
      */
@@ -464,20 +468,7 @@ public class Usuario implements Serializable {
         }
     }
     
-    public String nuevo(Object obj){
-        String resp = "Error no es un objeto permitido";
-        if (obj instanceof Sugerencia) {
-            nuevaSugerencia((Sugerencia) obj);
-            SerializacionSugerencia.serializarSugerencia(sugerencias);
-            resp = "Sugerencia registrada con exito";
-        }
-        
-        if (obj instanceof Sugerencia) {
-            nuevaSugerencia((Sugerencia) obj);
-            resp = "Ingreso registrado con exito";
-        }
-        return resp;
-    }
+
 
     /**
      * Creación del método equals
@@ -499,14 +490,13 @@ public class Usuario implements Serializable {
         return resp;
     }
 
-    public void nuevaSugerencia(Sugerencia s) {
-        //if (censos != null) {
-        int i = numSugerencias++;
-        if (numSugerencias > sugerencias.length) {
-            Sugerencia[] sugerenciasAux = sugerencias;
-            sugerencias = new Sugerencia[numSugerencias];
-            System.arraycopy(sugerenciasAux, 0, sugerencias, 18, 20);
+    public static void nuevaSugerencia(Sugerencia s) {
+        if (numSugerencias == sugerencias.length) {
+            Sugerencia[] aux = new Sugerencia[sugerencias.length + 1];
+            System.arraycopy(sugerencias, 0, aux, 0, sugerencias.length);
+            sugerencias = aux;
         }
+        int i = numSugerencias++;
         sugerencias[i] = s;
     }
     

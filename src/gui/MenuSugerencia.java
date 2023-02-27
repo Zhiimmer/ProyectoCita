@@ -14,7 +14,7 @@ public class MenuSugerencia {
 
     Scanner sc = new Scanner(System.in);
 
-    Usuario sugerencia = new Usuario();
+    Usuario s = new Usuario();
 
     public void setOpc(int opcm) throws ParseException {
         int opcion;
@@ -31,6 +31,7 @@ public class MenuSugerencia {
         System.out.println("");
         System.out.println("Escoja una opción: ");
         opcion = sc.nextInt();
+//        Usuario.carga();
         switch (opcion) {
 
             case 1 -> {

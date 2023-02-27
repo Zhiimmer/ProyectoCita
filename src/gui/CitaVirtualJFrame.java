@@ -36,7 +36,7 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonAtras2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,8 +67,13 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
 
         jButton3.setText("ELIMINAR");
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jButton4.setText("ATRAS");
+        jButtonAtras2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jButtonAtras2.setText("ATRAS");
+        jButtonAtras2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAtras2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,7 +102,7 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
                         .addComponent(jButton3)))
                 .addGap(26, 26, 26))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButton4)
+                .addComponent(jButtonAtras2)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -118,7 +123,7 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButtonAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -142,10 +147,15 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAtras2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtras2MouseClicked
+        // TODO add your handling code here:
+        MenuPrincipalJFrame.main(evt);
+    }//GEN-LAST:event_jButtonAtras2MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(java.awt.event.MouseEvent evt) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -181,7 +191,7 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton jButtonAtras2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -34,8 +34,8 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
         jButtonContinuar2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonContinuar3 = new javax.swing.JButton();
+        jButtonContinuar4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,6 +70,11 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
 
         jButtonContinuar2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jButtonContinuar2.setText("Continuar");
+        jButtonContinuar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonContinuar2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -81,11 +86,21 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
         jLabel4.setText("Menú Cita Presencial");
         jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jButton1.setText("Continuar");
+        jButtonContinuar3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jButtonContinuar3.setText("Continuar");
+        jButtonContinuar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonContinuar3MouseClicked(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jButton2.setText("Continuar");
+        jButtonContinuar4.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jButtonContinuar4.setText("Continuar");
+        jButtonContinuar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonContinuar4MouseClicked(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jButton3.setText("SALIR");
@@ -108,8 +123,8 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonContinuar1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(jButtonContinuar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButtonContinuar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonContinuar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jButton3))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -127,11 +142,11 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonContinuar3))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonContinuar4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
@@ -168,6 +183,21 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         UsuarioJFrame.main(evt);
     }//GEN-LAST:event_jButtonContinuar1MouseClicked
+
+    private void jButtonContinuar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar2MouseClicked
+        // TODO add your handling code here:
+        SugerenciasJFrame.main(evt);
+    }//GEN-LAST:event_jButtonContinuar2MouseClicked
+
+    private void jButtonContinuar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar3MouseClicked
+        // TODO add your handling code here:
+        CitaVirtualJFrame.main(evt);
+    }//GEN-LAST:event_jButtonContinuar3MouseClicked
+
+    private void jButtonContinuar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar4MouseClicked
+        // TODO add your handling code here:
+        CitaPresencialJFrame.main(evt);
+    }//GEN-LAST:event_jButtonContinuar4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -206,11 +236,11 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     public javax.swing.JButton jButtonContinuar1;
     public javax.swing.JButton jButtonContinuar2;
+    public javax.swing.JButton jButtonContinuar3;
+    public javax.swing.JButton jButtonContinuar4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

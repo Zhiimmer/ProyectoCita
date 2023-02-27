@@ -4,7 +4,6 @@
  */
 package gui;
 
-import dominio.Carrera;
 import dominio.Facultad;
 import java.text.ParseException;
 import java.util.Scanner;
@@ -27,9 +26,9 @@ public class MenuUsuario {
         System.out.println("");
         System.out.println("Menú de opciones:");
         System.out.println("1. Crear Usuario ");
-        System.out.println("2. Modificar Sugerencia");
-        System.out.println("3. Consultar Sugerencia");
-        System.out.println("4. Eliminar Sugerencia");
+        System.out.println("2. Modificar Usuario");
+        System.out.println("3. Consultar Usuario");
+        System.out.println("4. Eliminar Usuario");
         System.out.println("5. Regresar al Menú Principal");
         System.out.println("");
         System.out.println("Escoja una opción: ");

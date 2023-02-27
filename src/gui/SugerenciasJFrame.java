@@ -35,7 +35,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonAtras1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,7 +62,17 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
 
         jButton1.setText("AGREGAR");
 
-        jButton4.setText("ATRAS");
+        jButtonAtras1.setText("ATRAS");
+        jButtonAtras1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAtras1MouseClicked(evt);
+            }
+        });
+        jButtonAtras1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtras1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,7 +98,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addGap(52, 52, 52))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(jButtonAtras1)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -108,7 +118,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(jButtonAtras1)
                 .addContainerGap())
         );
 
@@ -133,10 +143,19 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAtras1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAtras1MouseClicked
+        // TODO add your handling code here:
+        MenuPrincipalJFrame.main(evt);
+    }//GEN-LAST:event_jButtonAtras1MouseClicked
+
+    private void jButtonAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtras1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAtras1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(java.awt.event.MouseEvent evt) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -172,7 +191,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton jButtonAtras1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
