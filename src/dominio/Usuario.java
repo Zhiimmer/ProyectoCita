@@ -1,5 +1,6 @@
 package dominio;
 import datos.SerializacionSugerencia;
+import static datos.SerializacionSugerencia.deserializarSugerencia;
 import datos.SerializacionUsuario;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -424,7 +425,7 @@ public class Usuario implements Serializable {
      * 
      * @return 
      */
-    public static Sugerencia[] getSugerencias() {
+    public Sugerencia[] getSugerencias() {
         return sugerencias;
     }
 
@@ -453,6 +454,19 @@ public class Usuario implements Serializable {
                 correoinstitucional + "\n generoMusical: " + generoMusical + "\n colorFav: " + colorFav + "\n comidaFav: " + comidaFav + 
                 "\n libroFav: " + libroFav + "\n animalFav: " + animalFav + "\n peliculaFav: " + peliculaFav + "\n hobby: " + hobby + 
                 "\n signoZodiacal: " + signoZodiacal + "\n fumadorSocial: " + fumadorSocial + "\n compatibilidad: " + compatibilidad;
+    }
+    
+    public void inicializarSugerencia(){
+        sugerencias = deserializarSugerencia();
+        if (sugerencias==null) {
+            sugerencias=new Sugerencia[3];
+        }else{
+            for (Sugerencia su : sugerencias) {
+                if(su!=null){
+                }
+            }
+            numSugerencias = sugerencias.length;
+        }
     }
     
     public static void inicializarSugerecia(){
@@ -551,11 +565,11 @@ public class Usuario implements Serializable {
      * @return el objeto Usuario correspondiente a la sugerencia buscada, o null si
      * no se encuentra la sugerencia.
      */
-    public boolean buscarSugerencia(Sugerencia su) throws SugerenciaNoEncontradaException{
+    public boolean buscarSugerencia(Sugerencia su) throws NoEncontradaException{
         boolean resultado = false;
         for(Sugerencia s : sugerencias){
             if (s != null && s.equals(su)) {
-                throw new SugerenciaNoEncontradaException(2, "La sugerencia no se encontro");
+                throw new NoEncontradaException(2, "La sugerencia no se encontro");
             }
         }
         return resultado;
@@ -566,12 +580,12 @@ public class Usuario implements Serializable {
      *
      * @return
      */
-    public String listarSugerencia() throws SugerenciaNoEncontradaException{
+    public String listarSugerencia() throws NoEncontradaException{
         String lista = "";
         for (Sugerencia sugerencia : sugerencias) {
             if (sugerencia != null) {
                 lista += sugerencia + "\r\n";
-                throw new SugerenciaNoEncontradaException(2, "La sugerencia no se encontro");
+                throw new NoEncontradaException(2, "La sugerencia no se encontro");
             }
         }
         return lista;
@@ -584,7 +598,7 @@ public class Usuario implements Serializable {
      * @param posicion
      * @param sugerencia
      */
-    public void eliminarSugerencia(int posicion, String sugerencia) throws SugerenciaNoEncontradaException{
+    public void eliminarSugerencia(int posicion, String sugerencia) throws NoEncontradaException{
         numSugerencias--;
         int a = 0;
         Sugerencia[] eliAux = sugerencias;
@@ -592,7 +606,7 @@ public class Usuario implements Serializable {
         if (posicion < eliAux.length - 1) {
             if (posicion == eliAux.length - 1) {
                 System.arraycopy(eliAux, 0, sugerencias, 0, numSugerencias);
-                throw new SugerenciaNoEncontradaException(1, "La sugerencia no se encuentro");
+                throw new NoEncontradaException(1, "La sugerencia no se encuentro");
             } else {
                 for (int i = 0; i < eliAux.length; i++) {
                     if (i != posicion) {
@@ -615,4 +629,16 @@ public class Usuario implements Serializable {
         }
         return texto;
     }
+    
+//    public String nuevo(Object obj){
+//        //hacer un casting de sugerencia
+//        String resp = "Error";
+//        if(obj instanceof Sugerencia sugerenca){
+//            nuevaSugerencia((Sugerencia)sugerenca);
+//            SerializacionSugerencia.serializarSugerencia(sugerencias);
+//            resp = "Sugerencia registrada";
+//        }
+//        return resp;
+//    }
+    
 }

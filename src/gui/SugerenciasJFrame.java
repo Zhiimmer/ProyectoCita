@@ -4,17 +4,39 @@
  */
 package gui;
 
+import dominio.Sugerencia;
+import dominio.Usuario;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ronny
  */
-public class SugerenciasJFrame extends javax.swing.JFrame {
+public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListener {
 
+    Sugerencia sugerencia = new Sugerencia();
+    Usuario usuario = new Usuario();
+    DefaultTableModel model;
+    int filas;
     /**
+     * Método constructor incluido el método inicializarSugerencia
+     * que contiene la serialización y la deserialización
      * Creates new form SugerenciasJFrame
      */
     public SugerenciasJFrame() {
         initComponents();
+        model = (DefaultTableModel)jTable.getModel();
+        usuario.inicializarSugerencia();
+        for(Sugerencia su : usuario.getSugerencias()){
+            if(su!=null){
+                model.addRow(new Object[]{String.valueOf(su.getDescripcion()), String.valueOf(su.getFechaSugerencia())});
+            }
+        }
     }
 
     /**
@@ -29,13 +51,15 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextComentario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        eliminarjButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonAtras1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,18 +73,39 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
         jLabel1.setText("Fecha:");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextFecha.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel2.setText("Comentario: ");
         jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton2.setText("EDITAR");
+        jTextComentario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextComentarioFocusLost(evt);
+            }
+        });
 
-        jButton3.setText("ELIMINAR");
+        jButton2.setText("EDITAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        eliminarjButton.setText("ELIMINAR");
+        eliminarjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarjButtonActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButtonAtras1.setText("ATRAS");
         jButtonAtras1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,6 +119,22 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
             }
         });
 
+        jTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Comentario", "Fecha"
+            }
+        ));
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -83,22 +144,24 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(16, Short.MAX_VALUE))
+                                .addComponent(jTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(9, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(180, 180, 180)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(eliminarjButton)
                         .addGap(52, 52, 52))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButtonAtras1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAtras1))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -107,17 +170,19 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(eliminarjButton)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAtras1)
                 .addContainerGap())
         );
@@ -153,9 +218,123 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAtras1ActionPerformed
 
     /**
+     * Metodo para eliminar las sugerencias
+     * @param evt 
+     */
+    private void eliminarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarjButtonActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel m = (DefaultTableModel) jTable.getModel();
+        int fila = jTable.getSelectedRow();
+        int respuesta, fils;
+        if(fila==-1){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la linea a Eliminar", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }else{
+            respuesta = JOptionPane.showConfirmDialog(null, "Esta seguro que desea ELIMINAR la sugerencia seleccionada?", "ATENCION", JOptionPane.YES_NO_OPTION);
+            if(respuesta == JOptionPane.YES_OPTION){
+                m.removeRow(fila);
+                jTextComentario.setText("");
+                jTextFecha.setText("");
+            }
+        }
+    }//GEN-LAST:event_eliminarjButtonActionPerformed
+
+    /**
+     * Metodo para seleccionar filas de la tabla de las sugerencias
+     * @param evt 
+     */
+    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+        // TODO add your handling code here:
+        int seleccion = jTable.getSelectedRow();
+        jTextComentario.setText(jTable.getValueAt(seleccion,0).toString());
+        jTextFecha.setText(jTable.getValueAt(seleccion,1).toString());
+        filas=seleccion;
+    }//GEN-LAST:event_jTableMouseClicked
+
+    /**
+     * Metodo para ingresar el nombre y ponerlo en mayusculas
+     * @param evt 
+     */
+    private void jTextComentarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextComentarioFocusLost
+        // TODO add your handling code here:
+        sugerencia.setDescripcion(jTextComentario.getText().toUpperCase());
+    }//GEN-LAST:event_jTextComentarioFocusLost
+
+    /**
+     * Metodo para editar los datoa de las sugerencias
+     * @param evt 
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel m = (DefaultTableModel) jTable.getModel();
+        int fila=jTable.getSelectedRow();
+       String[]info = new String [2];
+       info[0]= jTextComentario.getText();
+       info[1] = jTextFecha.getText();
+       
+
+       for (int i =0; i< jTable.getColumnCount();i++){
+          m.setValueAt(info[i], fila, i);
+       }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    /**
+     * Metodo para agregar los datos de las sugerencias
+     * @param evt 
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String DateToStr = format.format(sugerencia.getFechaSugerencia());
+        if(jTextComentario.getText().trim().length()==0){
+            jTextComentario.grabFocus();
+        }else{
+            registrar(jTable, (sugerencia.getDescripcion()), 1, DateToStr, model);
+        }
+        //usuario.nuevo(sugerencia);
+        jTextComentario.setText("");
+        jTextFecha.setText("");
+        sugerencia = new Sugerencia();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * Metodo para verificar si existe duplicados en las sugerencias controlado por la descrippcion
+     * @param table
+     * @param descripcion
+     * @param fechaSugerencia
+     * @param col
+     * @return 
+     */
+    public boolean exist(JTable table, String fechaSugerencia, int col){
+        boolean existe = false;
+        for(int i=0;i<table.getRowCount();i++){
+            if(table.getValueAt(i, col).equals(fechaSugerencia)){
+                existe=true;
+            }
+        }
+        return existe;
+    }
+    
+    /**
+     * Metodo para registrar las sugerencias en caso de no estar duplciada
+     * @param table
+     * @param descripcion
+     * @param col
+     * @param fechaSugerencia
+     * @param mdt 
+     */
+    public void registrar(JTable table, String descripcion, int col, String fechaSugerencia, DefaultTableModel mdt){
+        if(!exist(table, fechaSugerencia, col)){
+            Object struct[]={descripcion,fechaSugerencia};
+            mdt.addRow(struct);
+        }else{
+            JOptionPane.showMessageDialog(null, "!La sugerencia "+descripcion+" ya Existe!"
+            ,"Mensaje del Sistema", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    /**
      * @param args the command line arguments
      */
-    public static void main(java.awt.event.MouseEvent evt) {
+    public static void main(java.awt.event.ActionEvent evt) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -188,15 +367,42 @@ public class SugerenciasJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton eliminarjButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     public javax.swing.JButton jButtonAtras1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JTextField jTextComentario;
+    private javax.swing.JTextField jTextFecha;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

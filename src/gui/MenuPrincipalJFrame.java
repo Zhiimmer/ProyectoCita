@@ -75,6 +75,11 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
                 jButtonContinuar2MouseClicked(evt);
             }
         });
+        jButtonContinuar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonContinuar2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -93,6 +98,11 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
                 jButtonContinuar3MouseClicked(evt);
             }
         });
+        jButtonContinuar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonContinuar3ActionPerformed(evt);
+            }
+        });
 
         jButtonContinuar4.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jButtonContinuar4.setText("Continuar");
@@ -101,9 +111,19 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
                 jButtonContinuar4MouseClicked(evt);
             }
         });
+        jButtonContinuar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonContinuar4ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jButton3.setText("SALIR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -176,28 +196,45 @@ public class MenuPrincipalJFrame extends javax.swing.JFrame {
 
     private void jButtonContinuar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuar1ActionPerformed
         // TODO add your handling code here:
-        
+        UsuarioJFrame.main(evt);
     }//GEN-LAST:event_jButtonContinuar1ActionPerformed
 
     private void jButtonContinuar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar1MouseClicked
         // TODO add your handling code here:
-        UsuarioJFrame.main(evt);
     }//GEN-LAST:event_jButtonContinuar1MouseClicked
 
     private void jButtonContinuar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar2MouseClicked
         // TODO add your handling code here:
-        SugerenciasJFrame.main(evt);
     }//GEN-LAST:event_jButtonContinuar2MouseClicked
 
     private void jButtonContinuar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar3MouseClicked
         // TODO add your handling code here:
-        CitaVirtualJFrame.main(evt);
     }//GEN-LAST:event_jButtonContinuar3MouseClicked
 
     private void jButtonContinuar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuar4MouseClicked
         // TODO add your handling code here:
-        CitaPresencialJFrame.main(evt);
     }//GEN-LAST:event_jButtonContinuar4MouseClicked
+
+    private void jButtonContinuar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuar2ActionPerformed
+        // TODO add your handling code here:
+                SugerenciasJFrame.main(evt);
+    }//GEN-LAST:event_jButtonContinuar2ActionPerformed
+
+    private void jButtonContinuar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuar3ActionPerformed
+        // TODO add your handling code here:
+                CitaVirtualJFrame.main(evt);
+
+    }//GEN-LAST:event_jButtonContinuar3ActionPerformed
+
+    private void jButtonContinuar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuar4ActionPerformed
+        // TODO add your handling code here:
+                CitaPresencialJFrame.main(evt);
+    }//GEN-LAST:event_jButtonContinuar4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

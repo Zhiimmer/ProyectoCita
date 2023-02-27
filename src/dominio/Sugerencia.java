@@ -23,7 +23,7 @@ public class Sugerencia implements Serializable {
      * Constructor sin argumentos que inicializa la descripción de la sugerencia a "Sin descripción" y la fecha de la sugerencia a nulo
      */
     public Sugerencia() {
-        this("Sin descripción", null);
+        this("Sin descripción", new Date());
     }
 
     /**
@@ -40,12 +40,14 @@ public class Sugerencia implements Serializable {
     /**
      * Constructor que permite referenciar objetos de esta clase
      *
-     * @param sugerencia el objeto Sugerencia a referenciar
+     * @param su el objeto Sugerencia a referenciar
      */
-    public Sugerencia(Sugerencia sugerencia) {
-        this(sugerencia.descripcion, sugerencia.fechaSugerencia);
+    public Sugerencia(Sugerencia su) {
+        this(su.descripcion, su.fechaSugerencia);
     }
 
+    //Gets y Sets
+    
     /**
      * Obtiene la descripción de la sugerencia
      *
@@ -73,13 +75,17 @@ public class Sugerencia implements Serializable {
         return fechaSugerencia;
     }
 
+    /**
+     * Modifica la fecha de pago
+     * @param fechaSugerencia 
+     */
     public void setFechaSugerencia(Date fechaSugerencia) {
         this.fechaSugerencia = fechaSugerencia;
     }
 
     @Override
     public String toString() {
-        return "\n\nSugerencia \nDescripcion: " + descripcion + ", \nFecha de la Sugerencia: " + fechaSugerencia;
+        return "\n\nSugerencia \nDescripcion: " + this.descripcion + ", \nFecha de la Sugerencia: " + this.fechaSugerencia;
     }
 
 }

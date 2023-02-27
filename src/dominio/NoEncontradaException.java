@@ -8,12 +8,12 @@ package dominio;
  *
  * @author ronny
  */
-public class SugerenciaNoEncontradaException extends Exception{
+public class NoEncontradaException extends Exception{
     
    private int codigoError;
    private String mensaje;
    
-   public SugerenciaNoEncontradaException(int codigoError, String mensaje) {
+   public NoEncontradaException(int codigoError, String mensaje) {
       super(mensaje);
       this.codigoError = codigoError;
       this.mensaje = mensaje;
