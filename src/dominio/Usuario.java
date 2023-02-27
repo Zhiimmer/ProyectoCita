@@ -468,21 +468,6 @@ public class Usuario implements Serializable {
             numSugerencias = sugerencias.length;
         }
     }
-    
-    public static void inicializarSugerecia(){
-        sugerencias = SerializacionSugerencia.deserializarSugerencia();
-        if (sugerencias==null) {
-            sugerencias=new Sugerencia[numSugerencias];
-        }else{
-            for (Sugerencia sugerencia : sugerencias) {
-                if (sugerencia!=null) {
-                }
-            }
-            numSugerencias = sugerencias.length;
-        }
-    }
-    
-
 
     /**
      * Creación del método equals

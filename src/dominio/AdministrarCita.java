@@ -1,35 +1,44 @@
 package dominio;
 
+import datos.SerializacionCitaVirtual;
+import java.io.Serializable;
+
 /**
  *
  * @author Edu. N
  */
-public class AdministrarCita {
+public class AdministrarCita implements IAdministrarCRUD, Serializable {
 
     /**
      * Array de citas
      */
-    private static Cita citas[];
+    public static Cita citas[];
     /**
      * Número de citas
      */
-    private static int numCitas;
+    public static int numCitas;
 
     /**
      * Bloque estático. Inicializa el array de citas con un tamaño de 3 y establece el número de citas en 0 al momento de crear la clase.
      */
+    
     static {
-        citas = new Cita[3];
-        numCitas = 0;
+        citasV = new CitaVirtual[3];
+        numCitasVirtuales = 0;
     }
+    
+    protected static CitaVirtual citasV[];
+    protected static int numCitasVirtuales;
+    
 
     /**
      * Constructor sin argumentos. Inicializa el array de citas con un tamaño de 3 y establece el número de citas en 0.
      */
     public AdministrarCita() {
-//        this.citas = new Cita[3];
-//        this.numCitas = 0;
-
+        citas = new Cita [3];
+        numCitas= 0;
+        citasV = new CitaVirtual[3];
+        numCitasVirtuales = 0;
     }
 
     /**
@@ -39,9 +48,10 @@ public class AdministrarCita {
      * @param numCitas número de citas
      */
     public AdministrarCita(Cita[] citas, int numCitas) {
-//        this.citas = citas;
-//        this.numCitas = numCitas;
-
+        citas = new Cita[3];
+        numCitas = 0;
+        citasV = new CitaVirtual[3];
+        numCitasVirtuales = 0;
     }
 
     /**
@@ -49,11 +59,77 @@ public class AdministrarCita {
      *
      * @param o objeto con los valores a ser copiados
      */
-    public AdministrarCita(AdministrarCita o) {
-//        this.citas = o.citas;
-//        this.numCitas = o.numCitas;
+    public AdministrarCita(AdministrarCita cita1) {
+        this(cita1.getCitas(), cita1.getNumCitas());
     }
 
+    //Get y Set
+
+    /**
+     * Lee el arreglo de citas
+     * @return 
+     */
+    public static Cita[] getCitas() {
+        return citas;
+    }
+
+    /**
+     * Modifica el arreglo de citas
+     * @param citas 
+     */
+    public static void setCitas(Cita[] citas) {
+        AdministrarCita.citas = citas;
+    }
+
+    /**
+     * Lee el numero de citas
+     * @return 
+     */
+    public static int getNumCitas() {
+        return numCitas;
+    }
+
+    /**
+     * Modofica el numero de citas
+     * @param numCitas 
+     */
+    public static void setNumCitas(int numCitas) {
+        AdministrarCita.numCitas = numCitas;
+    }
+
+    /**
+     * Lee el el numero de citas virtuales
+     * @return 
+     */
+    public static int getNumCitasVirtuales() {
+        return numCitasVirtuales;
+    }
+
+    /**
+     * Modifica  el numero de citas
+     * @param numCitasVirtuales 
+     */
+    public static void setNumCitasVirtuales(int numCitasVirtuales) {
+        AdministrarCita.numCitasVirtuales = numCitasVirtuales;
+    }
+
+    /**
+     * Lee el arreglo de citas viruales
+     * @return 
+     */
+    public static CitaVirtual[] getCitasV() {
+        return citasV;
+    }
+
+    /**
+     * Modifica el arreglo de citas virtuales
+     * @param citasV 
+     */
+    public static void setCitasV(CitaVirtual[] citasV) {
+        AdministrarCita.citasV = citasV;
+    }
+    
+    
     //Metodos CRUD de la clase 
     /**
      * Método para crear un nuevo lugar de citas.
@@ -147,4 +223,41 @@ public class AdministrarCita {
         }
     }
 
+    public void inicializarCitaVirtual(){
+        citasV = SerializacionCitaVirtual.deserializarCitaVirtual();
+        if (citasV==null) {
+            citasV=new CitaVirtual[3];
+        }else{
+            for (CitaVirtual citaV : citasV) {
+                if (citaV!=null) {
+                }
+            }
+            numCitasVirtuales = citasV.length;
+        }
+    }
+
+    @Override
+    public String nuevo(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String editar(Object obj, int posicion) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String borrar(Object obj, int posicion) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object buscarPorId(Object obj, Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String listar(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -4,17 +4,37 @@
  */
 package gui;
 
+import dominio.AdministrarCita;
+import dominio.CitaVirtual;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ronny
  */
-public class CitaVirtualJFrame extends javax.swing.JFrame {
+public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListener {
 
+    CitaVirtual citaV = new CitaVirtual();
+    AdministrarCita adminCita = new AdministrarCita();
+    public static DefaultTableModel modelo;
+    int filas;
+    
     /**
      * Creates new form CitaVirtualJFrame
      */
     public CitaVirtualJFrame() {
         initComponents();
+        modelo = (DefaultTableModel)jTableCitaV.getModel();
+        adminCita.inicializarCitaVirtual();
+        for(CitaVirtual citaV : adminCita.getCitasV()){
+            if(citaV!=null){
+                modelo.addRow(new Object[]{String.valueOf(citaV.getDuracionLlamada()), String.valueOf(citaV.getPlataforma())});
+            }
+        }
     }
 
     /**
@@ -30,13 +50,15 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextPlataforma = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextDuracion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButtonAtras2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCitaV = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,17 +77,42 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
         jLabel2.setText("Plataforma: ");
         jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextPlataforma.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextPlataforma.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextPlataformaFocusLost(evt);
+            }
+        });
 
         jLabel3.setText("Ejemplo: Zoom, Mett, Teams");
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextDuracion.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextDuracion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextDuracionFocusLost(evt);
+            }
+        });
 
         jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("EDITAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButtonAtras2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jButtonAtras2.setText("ATRAS");
@@ -75,6 +122,24 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
             }
         });
 
+        jTableCitaV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Plataforama", "Duración"
+            }
+        ));
+        jTableCitaV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCitaVMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableCitaV);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -83,38 +148,43 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(191, 191, 191)
+                                .addComponent(jButton3))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(33, 33, 33)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)))
+                                .addComponent(jTextPlataforma, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
+                        .addGap(26, 26, 26))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton1)
-                        .addGap(250, 250, 250)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
-                .addGap(26, 26, 26))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButtonAtras2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButtonAtras2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextPlataforma, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -122,8 +192,11 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jButtonAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -152,6 +225,112 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
         MenuPrincipalJFrame.main(evt);
     }//GEN-LAST:event_jButtonAtras2MouseClicked
 
+    /**
+     * Metodo para eliminar las citas cirtuales
+     * @param evt 
+     */
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel m = (DefaultTableModel) jTableCitaV.getModel();
+        int fila = jTableCitaV.getSelectedRow();
+        int respuesta, fils;
+        if(fila==-1){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la linea a Eliminar", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }else{
+            respuesta = JOptionPane.showConfirmDialog(null, "Esta seguro que desea ELIMINAR la cita virtual seleccionada?", "ATENCION", JOptionPane.YES_NO_OPTION);
+            if(respuesta == JOptionPane.YES_OPTION){
+                m.removeRow(fila);
+                jTextDuracion.setText("");
+                jTextPlataforma.setText("");
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    /**
+     * Metodo para seleccionar filas de la tabla de las citas virtuales
+     * @param evt 
+     */
+    private void jTableCitaVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCitaVMouseClicked
+        // TODO add your handling code here:
+        int seleccion = jTableCitaV.getSelectedRow();
+        jTextDuracion.setText(jTableCitaV.getValueAt(seleccion,0).toString());
+        jTextPlataforma.setText(jTableCitaV.getValueAt(seleccion,1).toString());
+        filas=seleccion;
+    }//GEN-LAST:event_jTableCitaVMouseClicked
+
+    /**
+     * Metodo para ingresar la duracion y ponerlo en mayusculas
+     * @param evt 
+     */
+    private void jTextDuracionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDuracionFocusLost
+        // TODO add your handling code here:
+        citaV.setDuracionLlamada(jTextDuracion.getText().toUpperCase());
+    }//GEN-LAST:event_jTextDuracionFocusLost
+
+    /**
+     * Metodo para ingresar la duracion y ponerlo en mayusculas
+     * @param evt 
+     */
+    private void jTextPlataformaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextPlataformaFocusLost
+        // TODO add your handling code here:
+        citaV.setPlataforma(jTextPlataforma.getText().toUpperCase());
+    }//GEN-LAST:event_jTextPlataformaFocusLost
+
+    /**
+     * Metodo para editar las citas virtuales
+     * @param evt 
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel m = (DefaultTableModel) jTableCitaV.getModel();
+        int fila=jTableCitaV.getSelectedRow();
+       String[]info = new String [2];
+       info[0]= jTextDuracion.getText();
+       info[1] = jTextPlataforma.getText();
+       
+
+       for (int i =0; i< jTableCitaV.getColumnCount();i++){
+          m.setValueAt(info[i], fila, i);
+       }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    /**
+     * Metodo para agregar citas virtuales
+     * @param evt 
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(jTextDuracion.getText().trim().length()==0){
+            jTextPlataforma.grabFocus();
+        }else{
+            registrar(jTableCitaV, (citaV.getDuracionLlamada()), 1, citaV.getPlataforma(), modelo);
+        }
+        //usuario.nuevo(sugerencia);
+        jTextDuracion.setText("");
+        jTextPlataforma.setText("");
+        citaV = new CitaVirtual();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public boolean exist(JTable table, String DuracionLlamada, int col){
+        boolean existe = false;
+        for(int i=0;i<table.getRowCount();i++){
+            if(table.getValueAt(i, col).equals(DuracionLlamada)){
+                existe=true;
+            }
+        }
+        return existe;
+    }
+    
+    public void registrar(JTable table, String DuracionLlamada, int col, String Plataforma, DefaultTableModel mdt){
+        if(!exist(table, Plataforma, col)){
+            Object struct[]={DuracionLlamada,Plataforma};
+            mdt.addRow(struct);
+        }else{
+            JOptionPane.showMessageDialog(null, "!La cita "+DuracionLlamada+" ya Existe!"
+            ,"Mensaje del Sistema", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -197,7 +376,34 @@ public class CitaVirtualJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableCitaV;
+    private javax.swing.JTextField jTextDuracion;
+    private javax.swing.JTextField jTextPlataforma;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -11,7 +11,7 @@ public class CitaVirtual extends Cita {
     /**
      * Clase que representa una cita virtual con atributos adicionales a una cita general.
      */
-    private double duracionLlamada;
+    private String duracionLlamada;
     private String plataforma;
 
     /**
@@ -19,7 +19,7 @@ public class CitaVirtual extends Cita {
      */
     public CitaVirtual() {
         super();
-        this.duracionLlamada = 0.0;
+        this.duracionLlamada = "0.0";
         this.plataforma = "No hay plataforma";
 //        this(0.0, "No hay plataforma");
     }
@@ -40,7 +40,7 @@ public class CitaVirtual extends Cita {
      * @param duracionLlamada duracion de la llamada
      * @param plataforma plataforma utilizada para la llamada
      */
-    public CitaVirtual(String horaAcordada, Date fecha, double duracionLlamada, String plataforma) {
+    public CitaVirtual(String horaAcordada, Date fecha, String duracionLlamada, String plataforma) {
         super(horaAcordada, fecha);
         this.duracionLlamada = duracionLlamada;
         this.plataforma = plataforma;
@@ -62,7 +62,7 @@ public class CitaVirtual extends Cita {
      *
      * @return duracion de la llamada
      */
-    public double getDuracionLlamada() {
+    public String getDuracionLlamada() {
         return duracionLlamada;
     }
 
@@ -71,8 +71,8 @@ public class CitaVirtual extends Cita {
      *
      * @param duracionLamada duracion de la llamada
      */
-    public void setDuracionLlamada(double duracionLamada) {
-        this.duracionLlamada = duracionLlamada;
+    public void setDuracionLlamada(String duracionLamada) {
+        this.duracionLlamada = duracionLamada;
     }
 
     /**

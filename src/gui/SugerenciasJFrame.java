@@ -122,7 +122,11 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
         jTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
                 "Comentario", "Fecha"
@@ -251,7 +255,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
     }//GEN-LAST:event_jTableMouseClicked
 
     /**
-     * Metodo para ingresar el nombre y ponerlo en mayusculas
+     * Metodo para ingresar la descripcion y ponerlo en mayusculas
      * @param evt 
      */
     private void jTextComentarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextComentarioFocusLost
@@ -260,7 +264,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
     }//GEN-LAST:event_jTextComentarioFocusLost
 
     /**
-     * Metodo para editar los datoa de las sugerencias
+     * Metodo para editar los datos de las sugerencias
      * @param evt 
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
