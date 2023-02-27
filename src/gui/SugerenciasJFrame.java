@@ -49,6 +49,8 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,8 +61,26 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
         eliminarjButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonAtras1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+
+        jTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Muy buena aplicación ", "03/02/2023"},
+                {"Me agrada muhco este tipo de apps", "05/01/2023"},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Comentario", "Fecha"
+            }
+        ));
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,26 +140,6 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
             }
         });
 
-        jTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Muy buena aplicación ", "03/02/2023"},
-                {"Me agrada muhco este tipo de apps", "05/01/2023"},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Comentario", "Fecha"
-            }
-        ));
-        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -164,10 +164,8 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
                         .addComponent(eliminarjButton)
                         .addGap(52, 52, 52))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAtras1))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jButtonAtras1)
+                        .addGap(0, 598, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +183,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
                     .addComponent(jButton2)
                     .addComponent(eliminarjButton)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                 .addComponent(jButtonAtras1)
                 .addContainerGap())
         );
