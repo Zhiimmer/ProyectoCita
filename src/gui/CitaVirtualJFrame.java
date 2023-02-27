@@ -13,26 +13,28 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase CasaJFrame con extends javax.swing.JFrame e implements MouseListener
+ * Clase que nos muestra la interfaz grafica del SubMenucitaVirtual
  * @author ronny
  */
 public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListener {
 
     CitaVirtual citaV = new CitaVirtual();
     AdministrarCita adminCita = new AdministrarCita();
-    public static DefaultTableModel modelo;
+    DefaultTableModel modelo;
     int filas;
     
     /**
+     * Método Constructor incluido el método inicializar cita virtual que contiene la serializacion y deserializacion
      * Creates new form CitaVirtualJFrame
      */
     public CitaVirtualJFrame() {
         initComponents();
         modelo = (DefaultTableModel)jTableCitaV.getModel();
         adminCita.inicializarCitaVirtual();
-        for(CitaVirtual citaV : adminCita.getCitasV()){
-            if(citaV!=null){
-                modelo.addRow(new Object[]{String.valueOf(citaV.getDuracionLlamada()), String.valueOf(citaV.getPlataforma())});
+        for(CitaVirtual citav1: adminCita.getCitasV()){
+            if(citav1!=null){
+                modelo.addRow(new Object[]{String.valueOf(citav1.getDuracionLlamada()), String.valueOf(citav1.getPlataforma())});
             }
         }
     }
@@ -122,8 +124,11 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
             }
         });
 
+        jTableCitaV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTableCitaV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"Zoom", "40min"},
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -148,9 +153,6 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +161,7 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton2)
@@ -174,6 +176,10 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonAtras2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,11 +198,11 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(jButtonAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -268,7 +274,7 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
     }//GEN-LAST:event_jTextDuracionFocusLost
 
     /**
-     * Metodo para ingresar la duracion y ponerlo en mayusculas
+     * Metodo para ingresar la plataforma y ponerlo en mayusculas
      * @param evt 
      */
     private void jTextPlataformaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextPlataformaFocusLost
@@ -305,12 +311,18 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
         }else{
             registrar(jTableCitaV, (citaV.getDuracionLlamada()), 1, citaV.getPlataforma(), modelo);
         }
-        //usuario.nuevo(sugerencia);
         jTextDuracion.setText("");
         jTextPlataforma.setText("");
         citaV = new CitaVirtual();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Metodo para verificar si existe duplicados en las citas virtuales controlado por la duracion de la llamada
+     * @param table
+     * @param DuracionLlamada
+     * @param col
+     * @return 
+     */
     public boolean exist(JTable table, String DuracionLlamada, int col){
         boolean existe = false;
         for(int i=0;i<table.getRowCount();i++){
@@ -321,12 +333,20 @@ public class CitaVirtualJFrame extends javax.swing.JFrame implements MouseListen
         return existe;
     }
     
+    /**
+     * Metodo para registar las citas virtuales en caso de no estar duplicada
+     * @param table
+     * @param DuracionLlamada
+     * @param col
+     * @param Plataforma
+     * @param mdt 
+     */
     public void registrar(JTable table, String DuracionLlamada, int col, String Plataforma, DefaultTableModel mdt){
         if(!exist(table, Plataforma, col)){
             Object struct[]={DuracionLlamada,Plataforma};
             mdt.addRow(struct);
         }else{
-            JOptionPane.showMessageDialog(null, "!La cita "+DuracionLlamada+" ya Existe!"
+            JOptionPane.showMessageDialog(null, "!La cita virtal de duración:  "+DuracionLlamada+" ya Existe!"
             ,"Mensaje del Sistema", JOptionPane.WARNING_MESSAGE);
         }
     }

@@ -14,7 +14,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase CasaJFrame con extends javax.swing.JFrame e implements MouseListener
+ * Clase que nos muestra la interfaz grafica del SubMenuSugerencias
  * @author ronny
  */
 public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListener {
@@ -24,7 +25,7 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
     DefaultTableModel model;
     int filas;
     /**
-     * Método constructor incluido el método inicializarSugerencia
+     * Método constructor incluido el método inicializar Sugerencia
      * que contiene la serialización y la deserialización
      * Creates new form SugerenciasJFrame
      */
@@ -122,8 +123,8 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
         jTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
+                {"Muy buena aplicación ", "03/02/2023"},
+                {"Me agrada muhco este tipo de apps", "05/01/2023"},
                 {null, null},
                 {null, null},
                 {null, null}
@@ -294,7 +295,6 @@ public class SugerenciasJFrame extends javax.swing.JFrame implements MouseListen
         }else{
             registrar(jTable, (sugerencia.getDescripcion()), 1, DateToStr, model);
         }
-        //usuario.nuevo(sugerencia);
         jTextComentario.setText("");
         jTextFecha.setText("");
         sugerencia = new Sugerencia();

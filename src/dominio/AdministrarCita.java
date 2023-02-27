@@ -117,7 +117,7 @@ public class AdministrarCita implements IAdministrarCRUD, Serializable {
      * Lee el arreglo de citas viruales
      * @return 
      */
-    public static CitaVirtual[] getCitasV() {
+    public CitaVirtual[] getCitasV() {
         return citasV;
     }
 
